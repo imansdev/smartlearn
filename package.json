@@ -1,0 +1,23 @@
+{
+  "name": "smartlearn",
+  "version": "1.0.0",
+  "description": "this is a dapp that could help to improve your learning",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ImanS007/smartlearn.git"
+  },
+  "author": "Iman Abbasizadeh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ImanS007/smartlearn/issues"
+  },
+  "homepage": "https://github.com/ImanS007/smartlearn#readme",
+  "keywords": []
+}
