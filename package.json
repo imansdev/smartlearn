@@ -19,5 +19,8 @@
     "url": "https://github.com/ImanS007/smartlearn/issues"
   },
   "homepage": "https://github.com/ImanS007/smartlearn#readme",
-  "keywords": []
+  "keywords": [],
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.3.1"
+  }
 }

@@ -1,5 +1,5 @@
-const SmartLearns = artifacts.require("SmartLearns");
+const SmartLearn = artifacts.require("SmartLearn");
 
 module.exports = function (deployer) {
-  deployer.deploy(SmartLearns);
+  deployer.deploy(SmartLearn);
 };
