@@ -1,7 +1,9 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.8.1 <0.9.0;
+pragma solidity >=0.8.0 <0.9.0;
 
-contract SmartLearn {
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+contract SmartLearn is Ownable{
   /*
    * Constant variables
    */
@@ -12,9 +14,6 @@ contract SmartLearn {
   /*
    * State variables
    */
-  
-  // Contract owner
-  address owner;
 
   struct Task {
     string description;
@@ -45,11 +44,6 @@ contract SmartLearn {
    * Modifiers
    */
 
-  modifier isOwner (address _address) {
-    require(msg.sender == owner);
-    _;
-  }
-
   modifier validDueDate (uint _date) {
     require(_date > block.timestamp);
     _;
@@ -66,18 +60,16 @@ contract SmartLearn {
     _;
   }
 
-  modifier incompleted (uint _id) {
+  modifier incomplete (uint _id) {
     require(!getTask(_id).completed);
     _;
   }
 
 
 
-  constructor() {
-    owner = msg.sender;
-  }
-
-
+  /* 
+   * Functions
+   */
 
   // Add task
   function add(string memory _description, uint _dueDate) public {
@@ -94,17 +86,25 @@ contract SmartLearn {
 
 
   // Update task
-  function update(uint _taskID, string memory _description, uint _dueDate)
-  public notPrized(_taskID) {
-    Task memory task = tasks[msg.sender][_taskID];
+  function update(uint _id, string memory _description, uint _dueDate)
+  public notPrized(_id) {
+    Task memory task = tasks[msg.sender][_id];
     task.description = _description;
     task.dueDate = _dueDate;
-    replace(_taskID, task);
+    replace(_id, task);
+  }
+
+  // Remove task
+  function remove(uint _id) public notPrized(_id) {
+    require(_id < tasks[msg.sender].length);
+
+    tasks[msg.sender][_id] = tasks[msg.sender][tasks[msg.sender].length - 1];
+    tasks[msg.sender].pop();
   }
   
 
   // Set complete
-  function setComplete(uint _id) public incompleted(_id) {
+  function setComplete(uint _id) public incomplete(_id) {
     Task memory task = getTask(_id);
     if (!hasPrize(_id) || !isExpired(_id)) {
       task.completed = true;
@@ -121,7 +121,10 @@ contract SmartLearn {
 
   // Is task locked: Has no price locked in it
   function hasPrize(uint _id) internal view returns (bool) {
-    return !(getTask(_id).value == 0);
+    Task memory task = getTask(_id);
+    if (task.value == 0)
+      return false;
+    return !task.cleared;
   }
 
   // Is task overdue
