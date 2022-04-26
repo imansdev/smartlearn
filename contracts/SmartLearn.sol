@@ -2,8 +2,10 @@
 pragma solidity >=0.8.0 <0.9.0;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "./Financable.sol";
 
-contract SmartLearn is Ownable{
+contract SmartLearn is Ownable, Financable{
+  
   /*
    * Constant variables
    */
@@ -26,12 +28,6 @@ contract SmartLearn is Ownable{
 
   // Tasks
   mapping (address => Task[]) public tasks;
-
-  // Credits
-  mapping (address => uint) public credits;
-
-  // Prizes
-  mapping (address => uint) public prizes;
 
   /* 
    * Events
@@ -62,6 +58,11 @@ contract SmartLearn is Ownable{
 
   modifier incomplete (uint _id) {
     require(!getTask(_id).completed);
+    _;
+  }
+
+  modifier dueIsSet (uint _id) {
+    require(getTask(_id).dueDate != 0);
     _;
   }
 
@@ -110,6 +111,14 @@ contract SmartLearn is Ownable{
       task.completed = true;
       replace(_id, task);
     }
+    if (hasPrize(_id) && !task.cleared) {
+      if (!isPunishing(_id)) {
+        task.cleared = true;
+        task.completed = true;
+        replace(_id, task);
+        addPrize(msg.sender, task.value);
+      }
+    }
   }
 
   // Set incomplete
@@ -119,12 +128,60 @@ contract SmartLearn is Ownable{
     replace(_id, task);
   }
 
-  // Is task locked: Has no price locked in it
+  // Has prize locked in it
   function hasPrize(uint _id) internal view returns (bool) {
     Task memory task = getTask(_id);
     if (task.value == 0)
       return false;
     return !task.cleared;
+  }
+
+  // Clear a task
+  function clear(uint _id) public returns (bool) {
+    Task memory task = getTask(_id);
+    if(hasPrize(_id) || isPunishing(_id)) {
+      return false;
+    }
+    if(isPunishmentOver(_id)) {
+      task.cleared = true;
+      payUser(task.value);
+      replace(_id, task);
+      return true;
+    }
+    return false;
+  }
+
+  // Set prize
+  function setPrize(uint _id) public payable dueIsSet(_id) {
+    Task memory task = getTask(_id);
+    require(task.value == 0);
+    require(!isExpired(_id));
+    require(task.cleared);
+
+    task.value = msg.value;
+    task.cleared = false;
+
+    replace(_id, task);
+  }
+
+  // Is in punishment period
+  function isPunishing(uint _id) public view returns (bool) {
+    if (!hasPrize(_id)) {
+      return false;
+    }
+    if (!!isExpired(_id)) {
+      return false;
+    }
+    return !isPunishmentOver(_id);
+  }
+
+  // Is punishment period over
+  function isPunishmentOver(uint _id) private view returns (bool){
+    Task memory task = getTask(_id);
+    if (block.timestamp > task.dueDate + PUNISHMENT_TIME) {
+      return true;
+    }
+    return false;
   }
 
   // Is task overdue
@@ -143,6 +200,7 @@ contract SmartLearn is Ownable{
 
   // Get task
   function getTask(uint _id) public view returns(Task memory) {
+    require(tasks[msg.sender].length>_id);
     return tasks[msg.sender][_id];
   }
 
