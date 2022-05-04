@@ -31,7 +31,7 @@ module.exports = {
    *  Change ABIs of contract path where frontend can be access them
    */
   
-  contracts_build_directory: path.join(__dirname, "./smartlearn-front/src/contracts"), 
+  contracts_build_directory: path.join(__dirname, "../smartlearn-front/src/contracts"), 
 
   /**
    * Networks define how you connect to your ethereum client and let you set the
