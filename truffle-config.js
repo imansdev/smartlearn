@@ -18,12 +18,21 @@
  *
  */
 
+ const path = require('path');  //Path Definition
+
 // const HDWalletProvider = require('@truffle/hdwallet-provider');
 //
 // const fs = require('fs');
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
 
 module.exports = {
+
+  /**
+   *  Change ABIs of contract path where frontend can be access them
+   */
+  
+  contracts_build_directory: path.join(__dirname, "./smartlearn-front/src/contracts"), 
+
   /**
    * Networks define how you connect to your ethereum client and let you set the
    * defaults web3 uses to send transactions. If you don't specify one truffle
