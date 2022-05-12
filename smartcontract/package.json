@@ -21,6 +21,8 @@
   "homepage": "https://github.com/ImanS007/smartlearn#readme",
   "keywords": [],
   "dependencies": {
-    "@openzeppelin/contracts": "^4.3.1"
+    "@openzeppelin/contracts": "^4.3.1",
+    "@truffle/hdwallet-provider": "^2.0.8",
+    "dotenv": "^16.0.1"
   }
 }

@@ -1,16 +1,34 @@
 <template>
   <div v-if="isDrizzleInitialized">
     <div>
-      <drizzle-contract
-        contractName="SmartLearn"
-        method="getPrize"
-        label="Value"
-      />
-
+      <h3>Tasks List</h3>
+      <b>Description / Created At / Value / Due Date / Compeleted / Cleared</b>
+      <drizzle-contract contractName="SmartLearn" method="getTasks" />
+      <h3>Add a Task</h3>
       <drizzle-contract-form
         contractName="SmartLearn"
         method="add"
-        :placeholders="['Value']"
+        :placeholders="placeholders"
+      />
+      <h3>Set a Task as Completed</h3>
+      <drizzle-contract-form
+        contractName="SmartLearn"
+        method="setComplete"
+        :placeholders="['Task ID']"
+      />
+
+      <h3>Set Prize for a Task</h3>
+      <drizzle-contract-form
+        contractName="SmartLearn"
+        method="setPrize"
+        :placeholders="['Task ID']"
+      />
+      
+      <h3>Clear a Task</h3>
+      <drizzle-contract-form
+        contractName="SmartLearn"
+        method="clear"
+        :placeholders="['Task ID']"
       />
     </div>
   </div>
