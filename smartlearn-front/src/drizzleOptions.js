@@ -10,7 +10,7 @@ const options = {
   },
   contracts: [SmartLearn],
   events: {
-    SmartLearn: ['LogTasksUpdated']
+    SmartLearn: ['LogCoursesUpdated']
   },
   polls: {
     accounts: 15000

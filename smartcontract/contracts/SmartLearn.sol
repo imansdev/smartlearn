@@ -1,43 +1,48 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.8.0 <0.9.0;
+//pragma experimental ABIEncoderV2; // Two level dynamic arrays support
 
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "./TaskFactory.sol";
+import "./CourseFactory.sol";
 
-contract SmartLearn is Ownable, TaskFactory {
-  
- // Get user's all tasks
-  function getTasks() public view returns (Task[] memory) {
-    return _getTasks();
+contract SmartLearn is Ownable, CourseFactory{
+
+  /// @notice Get all courses of msg sender
+  /// @return Courses array
+  function getCourses() public view returns (Course[] memory) {
+    return _getCourses();
   }
   
-  // Add a new task
-  function add(string memory _description, uint _dueDate) public {
-    _add(_description, _dueDate);
+  /// @notice Add a new course for msg sender
+  /// @param _description Course decription
+  /// @param _deadline Course due date
+  function add(string memory _description, uint _deadline) public payable {
+    _add(_description, _deadline);
   }
 
-  // Set a task as completed
+
+  // Set a course as completed
   function setComplete(uint _id) public {
     _setComplete(_id);
   }
 
-  // Set prize for a task
-  function setPrize(uint _id) public payable {
-    _setPrize(_id);
+  // Remove a course
+  function remove(uint _id) public {
+    _remove(_id);
   }
 
-  // Clear a task
-  function clear(uint _id) public returns (bool) {
-    return _clear(_id);
+  // Add prize to a course
+  // function setPrize(uint _id) public payable {
+  //   _setPrize(_id);
+  // }
+
+  // Kill a course
+  function kill(uint _id) public {
+    _kill(_id);
   }
+  
 
-  /**
-   *pause() function is implemented to stop all deposits to the 
-   *contract so that new users wouldn't loss their coins 
-   *if there are any bugs in contract.
-   */
-
-    // Pause contract deposits
+  // Pause contract deposits
   function pause() public onlyOwner() {
     _pause();
   }
@@ -48,4 +53,3 @@ contract SmartLearn is Ownable, TaskFactory {
   }
 
 }
-  

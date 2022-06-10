@@ -2,7 +2,11 @@ import Vue from 'vue'
 import App from './App.vue'
 import Vuex from 'vuex'
 
-// import drizzleVuePlugin from '@drizzle/vue-plugin'
+import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
+import 'bootstrap/dist/css/bootstrap.css';
+
+Vue.use(BootstrapVue);
 
 import drizzleVuePlugin from '@drizzle/vue-plugin'
 import drizzleOptions from './drizzleOptions'

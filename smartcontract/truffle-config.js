@@ -20,9 +20,9 @@
 
  const path = require('path');  //Path Definition
 
- require("dotenv").config({ path: path.join(__dirname, "../.env") });
+ //require("dotenv").config({ path: path.join(__dirname, "../.env") });
  
- const HDWalletProvider = require('@truffle/hdwallet-provider');
+ //const HDWalletProvider = require('@truffle/hdwallet-provider');
 //
 // const fs = require('fs');
 // const mnemonic = fs.readFileSync(".secret").toString().trim();

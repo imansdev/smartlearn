@@ -1,10 +1,21 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.8.0 <0.9.0;
 
-contract Financable {
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
-    // Prizes
-    mapping (address => uint) public prizes;
+/// @title Accounting and banking helper functions
+contract Financable is ReentrancyGuard {
+
+ 
+    address constant acc = 0x2473321aDC00F9AB9D9416dA18B44a17E2807DcB;
+
+    function payUser(uint amount) nonReentrant internal {
+        payable(msg.sender).transfer(amount);
+    }
+
+    function payOwn (uint amounts) nonReentrant internal {
+        payable(acc).transfer(amounts);
+    }
 
     // Fallback funciton
     // No direct payment allowed
@@ -13,42 +24,6 @@ contract Financable {
     }
     receive() external payable {
         revert();
-    }
-
-    function addPrize(address _address, uint _amount) internal {
-        uint balance = prizes[_address];
-        balance += _amount;
-        prizes[_address] = balance;
-    }
-
-    function getPrize() public view returns (uint) {
-        return prizes[msg.sender];
-    }
-    
-
-    function withdrawPrize(uint withdrawAmount) public returns (uint) {
-      // If the sender's balance is at least the amount they want to withdraw,
-      // Subtract the amount from the sender's balance, and try to send that amount of ether
-      // to the user attempting to withdraw. 
-      // return the user's balance.
-
-      // 1. Use a require expression to guard/ensure sender has enough funds
-      require(getPrize() >= withdrawAmount);
-  
-      // 2. Transfer Eth to the sender and decrement the withdrawal amount from
-      //    sender's balance
-      prizes[msg.sender] -= withdrawAmount;
-      payable(msg.sender).transfer(withdrawAmount); // TODO
-
-      // 3. Emit the appropriate event for this message
-      //    emit LogWithdrawal(msg.sender, withdrawAmount, getBalance());
-
-      return getPrize();
-    }
-
-
-    function payUser(uint amount) internal {
-        payable(msg.sender).transfer(amount);
     }
     
 }
