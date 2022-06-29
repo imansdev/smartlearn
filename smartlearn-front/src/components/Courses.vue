@@ -10,7 +10,7 @@
           <th scope="col">Complete/kill</th>
           <th scope="col">Prize</th>
           <th scope="col"></th>
-          <th scope="col">Remove</th>
+          <th scope="col">{{hh()}}</th>
         </tr>
       </thead>
       <tbody>
@@ -37,7 +37,7 @@ const args = {
   method: "getCourses",
   methodArgs: "",
 };
-
+let c=0;
 export default {
   name: "Courses",
   components: {
@@ -65,8 +65,20 @@ export default {
           killed: course[6],
         };
       });
+      c++;
       return outputTaks;
     },
+    
+  },
+  methods:{
+    hh(){
+      if (c > 0){
+        // eslint-disable-next-line no-console
+        // console.log(c);
+        // const f =2
+        return `${c}`
+      }
+    }
   },
   created() {
     this.$store.dispatch("drizzle/REGISTER_CONTRACT", args);

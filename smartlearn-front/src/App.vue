@@ -3,20 +3,8 @@
     <div>
       <Header />
     </div>
-    <div class="container py-3 my-4" style="min-height: 80vh">
-      <div class="row">
-        <div class="col-lg-12 col-md-12">
-          <h3>Add a Course</h3>
-          <AddCourseForm />
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-12 col-md-12">
-          <h3>SmartLearn</h3>
-          <Courses />
-        </div>
-      </div>
+    <div class="container py-3 my-4" style="min-height: 75vh">
+      <router-view></router-view>
     </div>
     <div>
       <Footer />
@@ -37,8 +25,6 @@
 </template>
 
 <script>
-import Courses from "./components/Courses.vue";
-import AddCourseForm from "./components/AddCourseForm.vue";
 import Footer from "./components/Footer.vue";
 import Header from "./components/Header.vue";
 import { mapGetters } from "vuex";
@@ -46,13 +32,10 @@ import { mapGetters } from "vuex";
 export default {
   name: "app",
   components: {
-    Courses,
-    AddCourseForm,
     Footer,
     Header,
   },
 
   computed: mapGetters("drizzle", ["isDrizzleInitialized"]),
-  
 };
 </script>

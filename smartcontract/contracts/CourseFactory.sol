@@ -10,7 +10,7 @@ contract CourseFactory is Financable, Pausable{
    */
   
 
-  uint constant public WAGE = 1000000000000000000 wei;
+  uint constant public WAGE = 100000000000000000 wei;
 
 
   /*

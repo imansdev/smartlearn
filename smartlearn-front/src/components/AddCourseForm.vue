@@ -12,12 +12,15 @@
 
         <div class="col-sm-2">
           <b-form-input
-            v-b-popover.hover.bottom="'The minimum prize is 1 eth'"
+            v-b-popover.hover.bottom="'The minimum prize is 0.1 eth'"
+            id="datepicker-valid"
             v-model="prize"
+            :state="prize >= 0.1"
             class="mb-2"
             placeholder="prize amount"
             type="text"
           ></b-form-input>
+          <i class="fa-brands fa-ethereum"></i>
         </div>
 
         <div class="col-sm-3">
@@ -59,16 +62,22 @@ export default {
   methods: {
     onSubmit() {
       let timestamp = 0;
-      if (this.date != "" && this.time != "") {
+      if (
+        this.date != "" &&
+        this.time != "" &&
+        this.prize >= 0.1 &&
+        this.description.length >= 1
+      ) {
         let datetimeString = this.date + " " + this.time;
         timestamp = moment(datetimeString, "YYYY-MM-DD HH:mm").unix();
+
+        this.drizzleInstance.contracts[args.contractName].methods[
+          args.method
+        ].cacheSend(this.description, timestamp, {
+          from: this.activeAccount,
+          value: this.drizzleInstance.web3.utils.toWei(this.prize, "ether"),
+        });
       }
-      this.drizzleInstance.contracts[args.contractName].methods[
-        args.method
-      ].cacheSend(this.description, timestamp, {
-        from: this.activeAccount,
-        value: this.drizzleInstance.web3.utils.toWei(this.prize, "ether"),
-      });
     },
   },
   data: () => ({

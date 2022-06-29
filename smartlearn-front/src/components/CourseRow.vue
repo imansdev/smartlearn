@@ -9,11 +9,12 @@
         <i class="fa-regular fa-square-check"></i> Completed At
         {{ timeSpent(course.finishedAt) }}
       </div>
-      <div v-else-if="course.killed" >
+      <div v-else-if="course.killed">
         <i class="fa-regular fa-rectangle-xmark"></i> Killed
       </div>
       <div v-else-if="course.deadline * 1000 < new Date().getTime()">
-        <b-button
+      {{onKillSubmit()}}
+        <!-- <b-button
           v-b-popover.hover.right="
             'When your deadline course expires your prize will be killed'
           "
@@ -21,14 +22,10 @@
           variant="primary"
           @click.prevent="onKillSubmit"
           >Kill</b-button
-        >
+        > -->
       </div>
       <div v-else>
-        <b-button
-          size="sm"
-          variant="warning"
-          @click.prevent="onCompleteSubmit"
-        >
+        <b-button size="sm" variant="warning" @click.prevent="onCompleteSubmit">
           Complete
         </b-button>
       </div>
@@ -46,10 +43,16 @@
         size="sm"
         variant="danger"
         @click.prevent="onRemoveSubmit"
-        >Remove</b-button
+        ><i class="fa-regular fa-trash-can"></i
+      ></b-button>
+      <b-button
+        v-else
+        size="sm"
+        variant="dark"
+        @click.prevent="onRemoveSubmit"
+        disabled
       >
-      <b-button v-else size="sm" @click.prevent="onRemoveSubmit" disabled>
-        Remove
+        <i class="fa-regular fa-trash-can"></i>
       </b-button>
     </td>
   </tr>
@@ -83,6 +86,7 @@ export default {
     onKillSubmit() {
       const method = "kill";
       this.doAction(method);
+      return "please confirmed the transaction"
     },
     onRemoveSubmit() {
       const method = "remove";
@@ -114,7 +118,6 @@ export default {
   },
   data: () => ({
     contractName: "SmartLearn",
-    prizeAmount: "",
   }),
 };
 </script>
