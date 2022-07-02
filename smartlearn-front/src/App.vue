@@ -3,7 +3,7 @@
     <div>
       <Header />
     </div>
-    <div class="container py-3 my-4" style="min-height: 75vh">
+    <div class="container py-3 my-4" style="min-height: 65vh">
       <router-view></router-view>
     </div>
     <div>

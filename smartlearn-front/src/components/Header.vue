@@ -14,13 +14,13 @@
 
       <b-collapse id="navbar-toggle-collapse" is-nav>
         <b-navbar-nav class="ml-auto">
-          <b-nav-item><router-link :to="'home'">Home</router-link></b-nav-item>
+          <b-nav-item><router-link :to="'/home'">Home</router-link></b-nav-item>
           <b-nav-item
-            ><router-link :to="'contact'"
+            ><router-link :to="'/contact'"
               >Conttact to US</router-link
             ></b-nav-item
           >
-          <b-nav-item><router-link :to="'yyy'">detail</router-link></b-nav-item>
+          <b-nav-item><router-link :to="'/yyy'">detail</router-link></b-nav-item>
         </b-navbar-nav>
       </b-collapse>
       <div right>

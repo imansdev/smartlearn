@@ -10,7 +10,17 @@
           <th scope="col">Complete/kill</th>
           <th scope="col">Prize</th>
           <th scope="col"></th>
-          <th scope="col">{{hh()}}</th>
+          <!-- <th scope="col"><div>
+    <span >{{
+      f.data
+    }}</span>
+  </div></th> -->
+          <!-- <th scope="col"><div v-for="(val, index) in f.data" :key="index">
+        <div>
+          <strong>{{ val.key }}</strong>
+        </div>
+        <div>{{ val.value }}</div>
+      </div></th> -->
         </tr>
       </thead>
       <tbody>
@@ -31,17 +41,17 @@
 <script>
 import { mapGetters } from "vuex";
 import CourseRow from "./CourseRow";
+// import Kokg from "./Kokg";
 
 const args = {
   contractName: "SmartLearn",
   method: "getCourses",
   methodArgs: "",
 };
-let c=0;
 export default {
   name: "Courses",
   components: {
-    CourseRow,
+    CourseRow
   },
   computed: {
     ...mapGetters("drizzle", ["drizzleInstance", "isDrizzleInitialized"]),
@@ -52,6 +62,23 @@ export default {
         method: args.method,
       });
     },
+    // isSt() {
+    //   return !this.contractInstances[this.contractName].synced
+    // },
+    // f() {
+    //   // let compo = 'Kokg'
+    //   let f = this.getContractData({
+    //     contract: "SmartLearn",
+    //     method: "getTotal",
+    //   });
+    //   // f = Object.entries(f)
+    //   //   .filter(([key]) => /^\D/.test(key))
+    //   //   .map(([key, value]) => ({ key, value }));
+    //   return{
+    //     data: f
+    //   }
+    //   // return this.contractInstances[args.contractName].getCourses
+    // },
     courses() {
       let outputTaks = [...this.rawCourses];
       outputTaks.forEach((course, index, theArray) => {
@@ -65,21 +92,14 @@ export default {
           killed: course[6],
         };
       });
-      c++;
       return outputTaks;
     },
-    
   },
-  methods:{
-    hh(){
-      if (c > 0){
-        // eslint-disable-next-line no-console
-        // console.log(c);
-        // const f =2
-        return `${c}`
-      }
-    }
-  },
+  // methods: {
+  //   // total(){
+  //     f();
+  //   // }
+  // },
   created() {
     this.$store.dispatch("drizzle/REGISTER_CONTRACT", args);
   },

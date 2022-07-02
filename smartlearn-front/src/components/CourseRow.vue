@@ -4,6 +4,7 @@
     <td>{{ course.description }}</td>
     <td>{{ beautyDatetime(course.createdAt) }}</td>
     <td>{{ beautyDatetime(course.deadline) }}</td>
+    <!-- <td><drizzle-contract contractName="SmartLearn" method="getTotal" /></td> -->
     <td>
       <div v-if="course.completed">
         <i class="fa-regular fa-square-check"></i> Completed At
@@ -13,7 +14,7 @@
         <i class="fa-regular fa-rectangle-xmark"></i> Killed
       </div>
       <div v-else-if="course.deadline * 1000 < new Date().getTime()">
-      {{onKillSubmit()}}
+        {{ onKillSubmit() }}
         <!-- <b-button
           v-b-popover.hover.right="
             'When your deadline course expires your prize will be killed'
@@ -72,6 +73,17 @@ export default {
     ...mapGetters("drizzle", ["drizzleInstance"]),
     ...mapGetters("accounts", ["activeAccount", "activeBalance"]),
   },
+  // mounted() {
+  //   this.$drizzleEvents.$on("drizzle/contractEvent", (payload) => {
+  //    // eslint-disable-next-line no-console
+  //    console.log("event catched", payload);
+  //     // const { Financable, TotalTerigel, data } = payload;
+
+      
+  //     // Do something with payload data
+  //   });
+
+  // },
   methods: {
     doAction(_method) {
       this.drizzleInstance.contracts[this.contractName].methods[
@@ -86,7 +98,7 @@ export default {
     onKillSubmit() {
       const method = "kill";
       this.doAction(method);
-      return "please confirmed the transaction"
+      return "please confirmed the transaction";
     },
     onRemoveSubmit() {
       const method = "remove";

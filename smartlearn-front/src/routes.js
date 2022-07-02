@@ -1,7 +1,10 @@
 import Home from './pages/Home.vue';
 import Contact from './pages/ContactUs.vue'
 import CourseDetail from './pages/CourseDetail.vue'
+import kolo from './pages/kolo.vue'
 export default [
+    
+
     {
         path: '/',
         redirect: '/home'
@@ -11,10 +14,15 @@ export default [
         component: Home
     },
     {
-        path : '/contact',
+        path: '/contact',
         component: Contact
-    },   {
+    },
+    {
         path: '/yyy',
-        component: CourseDetail,
-      }
+        component: kolo
+    },
+    {
+        path: '/courses/:id',
+        component: CourseDetail
+    }
 ]

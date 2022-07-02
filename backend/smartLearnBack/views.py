@@ -49,6 +49,3 @@ def postCourses(request):
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
-    # courses = Course.objects.all()
-    # serializer = CourseSerializer(courses, many=True)
-    # return Response(serializer.data)

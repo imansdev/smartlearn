@@ -2,9 +2,10 @@
 pragma solidity >=0.8.0 <0.9.0;
 
 import "./Financable.sol";
+import "./Coursable.sol";
 import "@openzeppelin/contracts/security/Pausable.sol";
 
-contract CourseFactory is Financable, Pausable{
+contract CourseFactory is Coursable, Financable, Pausable{
   /*
    * Constant variables
    */
@@ -110,6 +111,7 @@ contract CourseFactory is Financable, Pausable{
     payOwn(WAGE);
     payUser(valueBack);
     replace(_id, course);
+    addToTotal(msg.sender,WAGE);
     //addPrize(msg.sender, course.value);
    
   }
@@ -137,6 +139,7 @@ contract CourseFactory is Financable, Pausable{
     course.killed = true;
     payOwn(course.value);
     replace(_id, course);
+    // addToTotal(msg.sender,course.value);
   }
 
   // Replace course

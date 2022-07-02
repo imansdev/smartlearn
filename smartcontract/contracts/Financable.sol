@@ -5,28 +5,40 @@ import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
 /// @title Accounting and banking helper functions
 contract Financable is ReentrancyGuard {
-
- 
     address constant acc = 0x53FC3e38a5D9E28324901F75af617dC149FDFE5f;
 
-    function payUser(uint amount) nonReentrant internal {
+    // event TotalTerigel();
+
+    function payUser(uint amount) internal nonReentrant {
         payable(msg.sender).transfer(amount);
     }
 
-    function payOwn (uint amounts) nonReentrant internal {
+    function payOwn(uint amounts) internal nonReentrant{
         payable(acc).transfer(amounts);
+    }
+        
+
+
+
+
+
+
+
+
+        // if (total[_address] >= 1000000000000000000) {
+            // emit TotalTerigel();
+        // }
         // if (transfer){
         //     total=total+amounts;
         // }
-    }
 
     // Fallback funciton
     // No direct payment allowed
     fallback() external payable {
         revert();
     }
+
     receive() external payable {
         revert();
     }
-    
 }

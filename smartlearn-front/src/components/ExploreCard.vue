@@ -1,42 +1,43 @@
 <template>
-  <div>
-    <b-card
-      no-body
-      class="overflow-hidden imanlgk"
-      style="max-width: 100%; max-height: 200px;"
-    >
-      <b-row no-gutters>
-        <b-col md="4">
-          <b-card-img
-            style="width: 350px; height: 200px;"
-            :src="course.image"
-            
-            :alt="`${course.name} image`"
-            class="rounded-1 img-fluid"
-          ></b-card-img>
-        </b-col>
-        <b-col md="8">
-          <b-row>
+  <router-link :to="`/courses/${course._id}`" class="block is-block">
+    <div>
+      <b-card
+        no-body
+        class="overflow-hidden imanlgk"
+        style="max-width: 100%; max-height: 230px;"
+      >
+        <b-row no-gutters>
+          <b-col md="4">
+            <b-card-img
+              style="width: 269px; height: 230px;"
+              :src="course.image"
+              :alt="`${course.name} image`"
+              class="rounded-0 imgjj"
+            ></b-card-img>
+          </b-col>
+          <b-col md="8" class="kk">
             <b-card-body :title="course.name">
-              <b-card-text>
-                {{course.description}}
-              </b-card-text>
+              <b-row class="freeze-table">
+                <b-card-text>
+                  {{ course.description }}
+                </b-card-text>
+              </b-row>
+              <b-row>
+                <b-col class="pt-1" md="7"
+                  ><b-row><b-button>detail</b-button></b-row></b-col
+                >
+              </b-row>
+              <b-row>
+                <b-card-sub-title class="py-3 text-center">
+                  {{ course.deadline }} weeks | {{ course.languageTo }}
+                </b-card-sub-title>
+              </b-row>
             </b-card-body>
-          </b-row>
-          <b-row>
-            <b-col md="7"
-              ><b-row><b-button>detail</b-button></b-row></b-col
-            >
-          </b-row>
-          <b-row>
-            <b-card-sub-title class="py-3 text-center">
-              {{ course.deadline }} weeks | {{ course.languageTo }}
-            </b-card-sub-title>
-          </b-row>
-        </b-col>
-      </b-row>
-    </b-card>
-  </div>
+          </b-col>
+        </b-row>
+      </b-card>
+    </div>
+  </router-link>
 </template>
 
 <script>
@@ -47,9 +48,36 @@ export default {
 
 <style>
 .imanlgk {
-  box-shadow: -10px 10px 20px #0c0c0b;
+  box-shadow: -15px 15px 10px #0c0c0b;
 }
 .righ {
   text-align: right;
 }
-</style>
+.freeze-table {
+  /* white-space: normal; */
+  /* white-space: nowrap; */
+  /* display: block;  */
+  /* direction: rlt ; */
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  width: 500px;
+  /* position: fixed; */
+  height: 95px;
+  border-spacing: 0;
+  font-family: "Segoe UI", sans-serif, "Helvetica Neue";
+  font-size: 16px;
+  padding: 0;
+  /* border: 1px solid #ccc; */
+}
+.kk {
+  background-color: #f5aa45;
+}
+.ll {
+  background-color: #45b7f5;
+}
+.imgjj {
+  max-width: auto;
+  height: auto;
+}</style
+>3
