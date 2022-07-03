@@ -21,6 +21,7 @@ contract CourseFactory is Coursable, Financable, Pausable{
   // Course structure
   struct Course {
     string description;
+    // address anotherWallet;
     uint createdAt;
     uint finishedAt;
     uint value;
@@ -81,6 +82,7 @@ contract CourseFactory is Coursable, Financable, Pausable{
       // Input parameters
       description: _description,
       deadline: _deadline,
+      // another: _anotherWallet,
       // Autofill course creation timestamp
       createdAt: block.timestamp,
       finishedAt: 100,
@@ -95,6 +97,12 @@ contract CourseFactory is Coursable, Financable, Pausable{
 
     // Log courses are updated
     emit LogCoursesUpdated();
+  }
+
+    function _donate() internal {
+    require(msg.value != 0);
+    payOwn(msg.value);
+    addToTotal(msg.sender,msg.value);
   }
 
   // Set complete

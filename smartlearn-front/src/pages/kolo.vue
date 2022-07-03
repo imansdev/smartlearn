@@ -1,5 +1,5 @@
 <template>
-  <div>
+<div>
     <b-form @submit.prevent="addNote">
       <div>
         <b-form-textarea
@@ -41,26 +41,47 @@
         <b-button type="submit">Add Note</b-button>
       </div>
     </b-form>
-    <div><Kokg/></div>
+    <div><Kokg /></div>
+    <div class="py-5">
+      <form >
+        <input v-model="prizeAmount" placeholder="donate" type="text" />
+        <b-button @click.prevent="onSubmi">Add</b-button>
+      </form>
+    </div>
   </div>
+
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import axios from "axios";
-import Kokg from '../components/Kokg.vue'
+import Kokg from "../components/Kokg.vue";
+
 export default {
+  name: "kolo",
+  computed: {
+    ...mapGetters("drizzle", ["drizzleInstance"]),
+    ...mapGetters("accounts", ["activeAccount", "activeBalance"]),
+  },
   data() {
     return {
       langT: "",
       langF: "",
       category: "",
       linkT: "",
+      prizeAmount:'',
     };
   },
-  components:{
+  components: {
     Kokg,
   },
   methods: {
+    onSubmi() {
+      this.drizzleInstance.contracts['SmartLearn'].methods['donate'].cacheSend({
+        from: this.activeAccount,
+        value: this.drizzleInstance.web3.utils.toWei(this.prizeAmount, "ether"),
+      });
+    },
     addNote: function() {
       const article = {
         languageFrom: this.langF,

@@ -1,43 +1,47 @@
 <template>
-  <router-link :to="`/courses/${course._id}`" class="block is-block">
-    <div>
-      <b-card
-        no-body
-        class="overflow-hidden imanlgk"
-        style="max-width: 100%; max-height: 230px;"
-      >
-        <b-row no-gutters>
-          <b-col md="4">
-            <b-card-img
-              style="width: 269px; height: 230px;"
-              :src="course.image"
-              :alt="`${course.name} image`"
-              class="rounded-0 imgjj"
-            ></b-card-img>
-          </b-col>
-          <b-col md="8" class="kk">
-            <b-card-body :title="course.name">
-              <b-row class="freeze-table">
-                <b-card-text>
-                  {{ course.description }}
-                </b-card-text>
-              </b-row>
-              <b-row>
-                <b-col class="pt-1" md="7"
-                  ><b-row><b-button>detail</b-button></b-row></b-col
+  <div>
+    <b-card
+      no-body
+      class="overflow-hidden imanlgk"
+      style="max-width: 100%; max-height: 230px;"
+    >
+      <b-row no-gutters>
+        <b-col md="4">
+          <b-card-img
+            style="width: 269px; height: 230px;"
+            :src="course.image"
+            :alt="`${course.name} image`"
+            class="rounded-0 imgjj"
+          ></b-card-img>
+        </b-col>
+        <b-col md="8" class="kk">
+          <b-card-body :title="course.name">
+            <b-row class="freeze-table">
+              <b-card-text>
+                {{ course.description }}
+              </b-card-text>
+            </b-row>
+            <b-row>
+              <span>
+              <b-col class="pt-1" md="7"> 
+                <router-link :to="`/courses/${course._id}`"
+                  ><b-row>
+                    <b-button>go</b-button>
+                  </b-row></router-link
                 >
-              </b-row>
-              <b-row>
-                <b-card-sub-title class="py-3 text-center">
-                  {{ course.deadline }} weeks | {{ course.languageTo }}
-                </b-card-sub-title>
-              </b-row>
-            </b-card-body>
-          </b-col>
-        </b-row>
-      </b-card>
-    </div>
-  </router-link>
+              </b-col>
+              </span>
+            </b-row>
+            <b-row>
+              <b-card-sub-title class="py-3 text-center">
+                {{ course.deadline }} weeks | {{ course.languageTo }}
+              </b-card-sub-title>
+            </b-row>
+          </b-card-body>
+        </b-col>
+      </b-row>
+    </b-card>
+  </div>
 </template>
 
 <script>

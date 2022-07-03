@@ -8,10 +8,15 @@ import "./CourseFactory.sol";
 contract SmartLearn is Ownable, CourseFactory{
 
   /// @notice Get all courses of msg sender
+  function donate() public payable{
+    _donate();
+  }
   /// @return Courses array
   function getCourses() public view returns (Course[] memory) {
     return _getCourses();
   }
+
+
   
   /// @notice Add a new course for msg sender
   /// @param _description Course decription
