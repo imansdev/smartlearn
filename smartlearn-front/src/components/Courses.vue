@@ -9,7 +9,7 @@
           <th scope="col">Deadline</th>
           <th scope="col">Complete/kill</th>
           <th scope="col">Prize</th>
-          <th scope="col"></th>
+          <th scope="col">{{gh}}</th>
           <!-- <th scope="col"><div>
     <span >{{
       f.data
@@ -55,7 +55,7 @@ export default {
   },
   computed: {
     ...mapGetters("drizzle", ["drizzleInstance", "isDrizzleInitialized"]),
-    ...mapGetters("contracts", ["getContractData"]),
+    ...mapGetters("contracts", ["getContractData","contractInstances"]),
     rawCourses() {
       return this.getContractData({
         contract: args.contractName,
@@ -65,7 +65,7 @@ export default {
     // isSt() {
     //   return !this.contractInstances[this.contractName].synced
     // },
-    // f() {
+    gh() {
     //   // let compo = 'Kokg'
     //   let f = this.getContractData({
     //     contract: "SmartLearn",
@@ -77,19 +77,22 @@ export default {
     //   return{
     //     data: f
     //   }
-    //   // return this.contractInstances[args.contractName].getCourses
-    // },
+      return this.contractInstances[args.contractName]
+    },
     courses() {
       let outputTaks = [...this.rawCourses];
       outputTaks.forEach((course, index, theArray) => {
         theArray[index] = {
           description: course[0],
-          createdAt: course[1],
-          finishedAt: course[2],
-          value: course[3],
-          deadline: course[4],
-          completed: course[5],
-          killed: course[6],
+          anotherWallet: course[1],
+          createdAt: course[2],
+          finishedAt: course[3],
+          value: course[4],
+          deadline: course[5],
+          completed: course[6],
+          killed: course[7],
+          punishMe: course[8],
+          toAnother: course[9]
         };
       });
       return outputTaks;

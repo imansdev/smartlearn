@@ -21,8 +21,8 @@ contract SmartLearn is Ownable, CourseFactory{
   /// @notice Add a new course for msg sender
   /// @param _description Course decription
   /// @param _deadline Course due date
-  function add(string memory _description, uint _deadline) public payable {
-    _add(_description, _deadline);
+  function add(string memory _description, uint _deadline, address _anotherWallet , bool _dontPunishMe, bool _toAnother) public payable {
+    _add(_description, _deadline, _anotherWallet ,_dontPunishMe, _toAnother);
   }
 
 

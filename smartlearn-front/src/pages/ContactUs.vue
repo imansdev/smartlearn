@@ -59,6 +59,7 @@ export default {
 
 <template>
   <div class="container">
+    <b-row>
     <h1 class="title">courses</h1>
 
     <b-col xl="9">
@@ -66,6 +67,8 @@ export default {
         <ExploreCard :course="course" />
       </b-row>
     </b-col>
+    <b-col xl="3"><b-card></b-card></b-col>
+    </b-row>
   </div>
 </template>
 

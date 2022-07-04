@@ -21,13 +21,15 @@ contract CourseFactory is Coursable, Financable, Pausable{
   // Course structure
   struct Course {
     string description;
-    // address anotherWallet;
+    address anotherWallet;
     uint createdAt;
     uint finishedAt;
     uint value;
     uint deadline;
     bool completed;
     bool killed;
+    bool punishMe;
+    bool toAnother;
   }
 
   // Courses
@@ -53,7 +55,7 @@ contract CourseFactory is Coursable, Financable, Pausable{
   }
 
   modifier validPrize (uint _value) {
-    require(_value >= WAGE);
+    require(_value > WAGE);
     _;
   }
 
@@ -69,27 +71,34 @@ contract CourseFactory is Coursable, Financable, Pausable{
     _;
   }
 
+  modifier validAnotherAddress (address _anotherWallet , bool _toAnother) {
+    require( (_anotherWallet != address(0) && _toAnother) || (_anotherWallet == address(0) &&  !_toAnother));
+    _;
+  }
+
   /* 
    * Functions
    */
 
   // Add course
-  function _add(string memory _description, uint _deadline)
-    internal validDeadline(_deadline) validPrize(msg.value) 
+  function _add(string memory _description, uint _deadline, address _anotherWallet, bool _punishMe, bool _toAnother)
+    internal validDeadline(_deadline) validPrize(msg.value) validAnotherAddress(_anotherWallet,_toAnother)
   {
     // Create a course instance
     Course memory course = Course({
       // Input parameters
       description: _description,
       deadline: _deadline,
-      // another: _anotherWallet,
+      anotherWallet: _anotherWallet,
       // Autofill course creation timestamp
       createdAt: block.timestamp,
       finishedAt: 100,
       // Default values
       value: msg.value,
       completed: false,
-      killed: false
+      killed: false,
+      punishMe: _punishMe,
+      toAnother: _toAnother
     });
 
     // Push created course to user's courses
@@ -117,11 +126,14 @@ contract CourseFactory is Coursable, Financable, Pausable{
     course.finishedAt = block.timestamp;
     uint valueBack = course.value - WAGE ;
     payOwn(WAGE);
+    if(course.toAnother == true){
+      payAnother(course.anotherWallet ,valueBack );
+    }else{
     payUser(valueBack);
+    }
     replace(_id, course);
     addToTotal(msg.sender,WAGE);
-    //addPrize(msg.sender, course.value);
-   
+    //addPrize(msg.sender, course.value);  
   }
 
   // Remove course
@@ -143,9 +155,17 @@ contract CourseFactory is Coursable, Financable, Pausable{
   // Kill a course
   function _kill(uint _id) internal {
     Course memory course = getCourse(_id);
+    uint valueBack = course.value - WAGE;
     require(isExpired(_id), "due date is expired");
     course.killed = true;
-    payOwn(course.value);
+    if (course.punishMe == false) {
+      payOwn(WAGE);
+      payUser(valueBack);
+      addToTotal(msg.sender,WAGE);
+    }else{
+      payOwn(course.value);
+      addToTotal(msg.sender,course.value);
+    }
     replace(_id, course);
     // addToTotal(msg.sender,course.value);
   }

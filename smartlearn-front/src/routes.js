@@ -1,7 +1,8 @@
 import Home from './pages/Home.vue';
 import Contact from './pages/ContactUs.vue'
 import CourseDetail from './pages/CourseDetail.vue'
-import kolo from './pages/kolo.vue'
+import TotalUserToSiteo from './components/totalUserToSite.vue'
+import AddToDoCourse from './pages/AddToDoCourse.vue'
 export default [
     
 
@@ -19,10 +20,14 @@ export default [
     },
     {
         path: '/yyy',
-        component: kolo
+        component: TotalUserToSiteo
     },
     {
         path: '/courses/:id',
         component: CourseDetail
+    },
+    {
+        path: '/Add',
+        component: AddToDoCourse
     }
 ]

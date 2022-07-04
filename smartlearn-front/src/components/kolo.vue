@@ -1,6 +1,7 @@
 <template>
 <div>
-    <b-form @submit.prevent="addNote">
+  <div>{{g}}</div>
+    <b-form @submit.prevent="orderCourse">
       <div>
         <b-form-textarea
           id="textarea-state"
@@ -41,7 +42,7 @@
         <b-button type="submit">Add Note</b-button>
       </div>
     </b-form>
-    <div><Kokg /></div>
+    <!-- <div><Kokg /></div> -->
     <div class="py-5">
       <form >
         <input v-model="prizeAmount" placeholder="donate" type="text" />
@@ -55,7 +56,7 @@
 <script>
 import { mapGetters } from "vuex";
 import axios from "axios";
-import Kokg from "../components/Kokg.vue";
+// import Kokg from "./totalUserToSite.vue";
 
 export default {
   name: "kolo",
@@ -70,11 +71,14 @@ export default {
       category: "",
       linkT: "",
       prizeAmount:'',
+    contractName: "SmartLearn",
+    method : "decreaseCount"
     };
   },
-  components: {
-    Kokg,
-  },
+  // components: {
+  //   Kokg,
+  // },
+  props: { g: Number },
   methods: {
     onSubmi() {
       this.drizzleInstance.contracts['SmartLearn'].methods['donate'].cacheSend({
@@ -82,7 +86,7 @@ export default {
         value: this.drizzleInstance.web3.utils.toWei(this.prizeAmount, "ether"),
       });
     },
-    addNote: function() {
+    orderCourse() {
       const article = {
         languageFrom: this.langF,
         languageTo: this.langT,
@@ -92,7 +96,13 @@ export default {
       axios
         .post("http://127.0.0.1:8000/api/v1/fcourses/", article)
         .then((response) => (this.articleId = response.data.id));
+      // let i =this.g--;
+      this.drizzleInstance.contracts[this.contractName].methods[
+          this.method
+        ].cacheSend(this.g)
+      
     },
+
   },
 };
 </script>

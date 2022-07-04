@@ -23,17 +23,36 @@
           <i class="fa-brands fa-ethereum"></i>
         </div>
 
-        <div class="col-sm-3">
+        <div class="col-sm-2">
           <b-form-input type="date" v-model="date" class="mb-2"></b-form-input>
         </div>
 
-        <div class="col-sm-3">
+        <div class="col-sm-2">
           <b-form-input type="time" v-model="time" class="mb-2"></b-form-input>
         </div>
 
+
         <div class="col-sm-1">
-          <b-button type="submit" variant="primary">Add</b-button>
+          <b-form-checkbox v-model="punishMe" name="check-punish" switch>
+            punishMe <b>( {{ punishMe }})</b>
+          </b-form-checkbox>
         </div>
+        <div class="col-sm-1">
+          <b-form-checkbox v-model="toAnother" name="check-another" switch>
+            toAnother <b>( {{ toAnother }})</b>
+          </b-form-checkbox>
+        </div>
+        <div v-if="toAnother === true" class="col-sm-7">
+          <b-form-input
+            v-model="anotherWallet"
+            class="mb-2"
+            placeholder="another address"
+          ></b-form-input>
+        </div>
+        <div v-else>{{defaultAddress()}}</div>
+          <div class="col-sm-1">
+            <b-button type="submit" variant="primary">Add</b-button>
+          </div>
       </b-form>
     </div>
   </div>
@@ -60,6 +79,9 @@ export default {
     ...mapGetters("accounts", ["activeAccount", "activeBalance"]),
   },
   methods: {
+    defaultAddress(){
+      this.anotherWallet = "0x0000000000000000000000000000000000000000"
+    },
     onSubmit() {
       let timestamp = 0;
       if (
@@ -73,10 +95,17 @@ export default {
 
         this.drizzleInstance.contracts[args.contractName].methods[
           args.method
-        ].cacheSend(this.description, timestamp, {
-          from: this.activeAccount,
-          value: this.drizzleInstance.web3.utils.toWei(this.prize, "ether"),
-        });
+        ].cacheSend(
+          this.description,
+          timestamp,
+          this.anotherWallet,
+          this.punishMe,
+          this.toAnother,
+          {
+            from: this.activeAccount,
+            value: this.drizzleInstance.web3.utils.toWei(this.prize, "ether"),
+          }
+        );
       }
     },
   },
@@ -85,6 +114,9 @@ export default {
     description: "",
     date: "",
     time: "",
+    anotherWallet: "0x0000000000000000000000000000000000000000",
+    toAnother: false,
+    punishMe: false,
   }),
 };
 </script>

@@ -5,9 +5,13 @@ import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
 /// @title Accounting and banking helper functions
 contract Financable is ReentrancyGuard {
-    address constant acc = 0xcdAB39f51eb80cbC47F00a102ecA6730Cb9da93c;
+    address constant acc = 0xF615Ddf8eb23Cd2Bb5d9D35E7a83545EB8282478;
 
     // event TotalTerigel();
+
+    function payAnother(address anotherAddress,uint amountt) internal nonReentrant {
+        payable(anotherAddress).transfer(amountt);
+    }
 
     function payUser(uint amount) internal nonReentrant {
         payable(msg.sender).transfer(amount);

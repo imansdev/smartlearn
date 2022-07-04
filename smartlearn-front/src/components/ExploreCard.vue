@@ -16,7 +16,7 @@
         </b-col>
         <b-col md="8" class="kk">
           <b-card-body :title="course.name">
-            <b-row class="freeze-table">
+            <b-row class="preambleS">
               <b-card-text>
                 {{ course.description }}
               </b-card-text>
@@ -57,21 +57,23 @@ export default {
 .righ {
   text-align: right;
 }
-.freeze-table {
+.preambleS {
   /* white-space: normal; */
   /* white-space: nowrap; */
   /* display: block;  */
   /* direction: rlt ; */
-  overflow: hidden;
+  overflow: scroll;
   text-overflow: ellipsis;
+  -o-text-overflow:ellipsis ;
 
   width: 500px;
   /* position: fixed; */
-  height: 95px;
+  height: 93px;
+  /* border: 5px solid black; */
   border-spacing: 0;
   font-family: "Segoe UI", sans-serif, "Helvetica Neue";
   font-size: 16px;
-  padding: 0;
+  padding: 1em;
   /* border: 1px solid #ccc; */
 }
 .kk {
@@ -83,5 +85,5 @@ export default {
 .imgjj {
   max-width: auto;
   height: auto;
-}</style
->3
+}
+</style>

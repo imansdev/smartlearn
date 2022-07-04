@@ -1,6 +1,6 @@
 <template>
-  <b-navbar toggleable="sm" type="light" variant="" class="imanlg mt-lg-3">
-    <div class="container" style="min-height: 10vh">
+  <b-navbar toggleable="sm" type="light" variant="" class="bgHeader">
+    <div class=" container" style="min-height: 10vh">
       <b-navbar-brand>
         <img
           src="../assets/logo.png"
@@ -102,6 +102,9 @@ export default {
 </script>
 
 <style>
+.bgHeader{
+  background-color:#45f594 ;
+}
 .imanlg {
   box-shadow: -0px 0px 3px #f5aa45;
 }
