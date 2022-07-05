@@ -20,11 +20,30 @@
               >Conttact to US</router-link
             ></b-nav-item
           >
-          <b-nav-item><router-link :to="'/yyy'">detail</router-link></b-nav-item>
+          <b-nav-item
+            ><router-link :to="'/yyy'">detail</router-link></b-nav-item
+          >
         </b-navbar-nav>
       </b-collapse>
+      <div>
+        <b-input-group class="hjl">
+          <b-input-group-prepend>
+            <b-button @click.prevent="onSubmit" variant="outline-dark">
+              <i class="fa-solid fa-circle-dollar-to-slot"></i
+            ></b-button>
+          </b-input-group-prepend>
+          <b-form-input
+            id="rcorners2"
+            v-model="donateAmount"
+            placeholder="Donate amount in ether"
+            type="text"
+          ></b-form-input>
+        </b-input-group>
+      </div>
       <div right>
-        <b-button v-b-toggle.sidebar-no-header>Any offer ?</b-button>
+        <b-button v-b-toggle.sidebar-no-header variant="outline-dark"
+          >Any offer ?</b-button
+        >
         <b-sidebar
           id="sidebar-no-header"
           aria-labelledby="sidebar-no-header-title"
@@ -36,8 +55,8 @@
             <b-form ref="form" @submit.prevent="sendEmail">
               <div class="px-3">
                 <div class="py-1">
-                  <b-button pill variant="outline-secondary" @click="hide">
-                    exit
+                  <b-button pill @click="hide">
+                    <i class="fa-regular fa-circle-xmark"></i>
                   </b-button>
                 </div>
                 <div class="py-1">
@@ -79,14 +98,29 @@
 
 <script>
 import emailjs from "@emailjs/browser";
+import { mapGetters } from "vuex";
 
 export default {
+  computed: {
+    ...mapGetters("drizzle", ["drizzleInstance"]),
+    ...mapGetters("accounts", ["activeAccount", "activeBalance"]),
+  },
   data() {
     return {
       message: "",
+      donateAmount: "",
     };
   },
   methods: {
+    onSubmit() {
+      this.drizzleInstance.contracts["SmartLearn"].methods["donate"].cacheSend({
+        from: this.activeAccount,
+        value: this.drizzleInstance.web3.utils.toWei(
+          this.donateAmount,
+          "ether"
+        ),
+      });
+    },
     sendEmail() {
       if (this.message.length >= 10) {
         emailjs.sendForm(
@@ -102,8 +136,27 @@ export default {
 </script>
 
 <style>
-.bgHeader{
-  background-color:#45f594 ;
+#rcorners2 {
+  border-radius: 6px;
+  border: 1px solid #0d0d0c;
+  padding: 18px;
+  width: 212px;
+  height: 0px;
+  box-shadow: inset 0 0 8px #f0f002, inset 0 0 8px #f0f002;
+}
+.around {
+  width: 100%;
+  height: 38px;
+  /* background-color: rgba(25, 208, 16, 0.894); */
+  border: black #101110;
+  /* border-width: 10px 0; */
+}
+.hjl {
+  text-align: center;
+  padding-right: 50px;
+}
+.bgHeader {
+  background-color: #45f594;
 }
 .imanlg {
   box-shadow: -0px 0px 3px #f5aa45;

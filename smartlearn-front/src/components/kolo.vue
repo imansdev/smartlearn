@@ -1,56 +1,44 @@
 <template>
-<div>
-  <div>{{g}}</div>
-    <b-form @submit.prevent="orderCourse">
-      <div>
-        <b-form-textarea
-          id="textarea-state"
+  <div>
+    <!-- <div>{{g}}</div> -->
+    <b-form-group @submit.prevent="orderCourse">
+      <div class="pt-2 pb-1"><i class="fa-solid fa-link"></i></div>
+      <div class="pb-3 pt-1">
+        <b-form-input
           v-model="linkT"
-          placeholder="Note Content..."
-          cols="2"
-          rows="2"
-        ></b-form-textarea>
+          placeholder="enter course link"
+        ></b-form-input>
       </div>
-      <div>
-        <b-form-textarea
-          id="textarea-state"
-          v-model="langF"
-          placeholder="Note Content..."
-          cols="2"
-          rows="2"
-        ></b-form-textarea>
-      </div>
-      <div>
-        <b-form-textarea
-          id="textarea-state"
-          v-model="langT"
-          placeholder="Note Content..."
-          cols="2"
-          rows="2"
-        ></b-form-textarea>
-      </div>
-      <div>
-        <b-form-textarea
-          id="textarea-state"
-          v-model="category"
-          placeholder="Note Content..."
-          cols="2"
-          rows="2"
-        ></b-form-textarea>
-      </div>
-      <div>
-        <b-button type="submit">Add Note</b-button>
-      </div>
-    </b-form>
-    <!-- <div><Kokg /></div> -->
-    <div class="py-5">
-      <form >
-        <input v-model="prizeAmount" placeholder="donate" type="text" />
-        <b-button @click.prevent="onSubmi">Add</b-button>
-      </form>
-    </div>
-  </div>
 
+      <div class="pt-2 pb-2"><i class="fa-solid fa-language"></i></div>
+      <div class="pb-1">
+        <b-form-input
+          v-model="langF"
+          placeholder="enter course language (From) "
+        ></b-form-input>
+      </div>
+      <div class="pb-3 pt-1">
+        <b-form-input
+          v-model="langT"
+          placeholder="enter course language (To)"
+        ></b-form-input>
+      </div>
+
+      <div class="pt-2 pb-2"><i class="fa-solid fa-layer-group"></i></div>
+      <div>
+        <b-form-input
+          v-model="category"
+          placeholder="enter course category"
+        ></b-form-input>
+      </div>
+
+      <div class="py-3">
+        <b-button type="submit" variant="outline-warning">Offer course</b-button>
+      </div>
+    </b-form-group>
+    <!-- <div><Kokg /></div> -->
+
+  </div>
 </template>
 
 <script>
@@ -70,9 +58,8 @@ export default {
       langF: "",
       category: "",
       linkT: "",
-      prizeAmount:'',
-    contractName: "SmartLearn",
-    method : "decreaseCount"
+      contractName: "SmartLearn",
+      method: "decreaseCount",
     };
   },
   // components: {
@@ -80,12 +67,6 @@ export default {
   // },
   props: { g: Number },
   methods: {
-    onSubmi() {
-      this.drizzleInstance.contracts['SmartLearn'].methods['donate'].cacheSend({
-        from: this.activeAccount,
-        value: this.drizzleInstance.web3.utils.toWei(this.prizeAmount, "ether"),
-      });
-    },
     orderCourse() {
       const article = {
         languageFrom: this.langF,
@@ -98,11 +79,9 @@ export default {
         .then((response) => (this.articleId = response.data.id));
       // let i =this.g--;
       this.drizzleInstance.contracts[this.contractName].methods[
-          this.method
-        ].cacheSend(this.g)
-      
+        this.method
+      ].cacheSend(this.g);
     },
-
   },
 };
 </script>

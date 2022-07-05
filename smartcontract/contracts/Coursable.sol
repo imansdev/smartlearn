@@ -6,9 +6,10 @@ import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 contract Coursable is ReentrancyGuard {
     mapping(address => uint256) public total;
     mapping(address => uint256) public courseCount;
+    mapping(address => uint256) public arrived;
 
-    uint256 public target = 100000000000000000;
-
+    uint256 constant public target = 1000000000000000000;
+    // uint256 public arrived = 0;
     function addToTotal(address _address, uint256 _amount)
         internal
         nonReentrant
@@ -16,14 +17,19 @@ contract Coursable is ReentrancyGuard {
         uint256 balance = total[_address];
         balance += _amount;
         total[_address] = balance;
-        addToReachTotal();
+        addToReachTotal(_amount);
     }
 
-    function addToReachTotal() public {
-        if (total[msg.sender] >= target) {
+    function addToReachTotal(uint256 _arrived) public {
+        arrived[msg.sender] += _arrived;
+        while(arrived[msg.sender] >= target){
             courseCount[msg.sender] += 1;
-            target += target;
+            arrived[msg.sender] -=target;
         }
+        // if (total[msg.sender] >= target) {
+        //     courseCount[msg.sender] += 1;
+        //     target += target;
+        // }
     }
 
     function reachTotal() public view returns (uint256) {
