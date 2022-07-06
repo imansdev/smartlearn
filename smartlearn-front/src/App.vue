@@ -4,12 +4,12 @@
     <div>
       <Header />
     </div>
-    <div class="container py-3 my-4" style="min-height: 65vh">
-      <router-view></router-view>
+    <div class="container" id="grad1" style="padding: 50px; min-width: 1280px;">
+      <router-view style="padding-right: -100em;"></router-view>
     </div>
-    <div>
+    <!-- <div>
       <Footer />
-    </div>
+    </div> -->
     </div>
   <!-- </div> -->
 
@@ -27,17 +27,26 @@
 </template>
 
 <script>
-import Footer from "./components/Footer.vue";
+
 import Header from "./components/Header.vue";
 // import { mapGetters } from "vuex";
 
 export default {
   name: "app",
   components: {
-    Footer,
+
     Header,
   },
 
   // computed: mapGetters("drizzle", ["isDrizzleInitialized"]),
 };
 </script>
+<style >
+#grad1 {
+  /* width: ; */
+  min-width: 1000px;
+  background-color: white; /* For browsers that do not support gradients */
+  background-image: linear-gradient(black, white);
+
+}
+</style>

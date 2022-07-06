@@ -114,4 +114,5 @@ export default {
 .imgaround {
   padding: 15px;
 }
+
 </style>

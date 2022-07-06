@@ -1,5 +1,5 @@
 <template>
-  <div class="container lesson-content">
+  <div  class="container lesson-content">
     <div class="video-wrapper">
       <iframe
         class="video"
@@ -66,4 +66,4 @@ export default {
   width: 100%;
   height: 100%;
 }
-</style>
+

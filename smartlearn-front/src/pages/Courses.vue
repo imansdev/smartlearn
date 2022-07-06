@@ -57,8 +57,9 @@ export default {
 </script>
  -->
 
-<template>
-  <div class="container">
+<template >
+
+  <div  class="container">
     <b-row>
     <h1 class="title">courses</h1>
 
@@ -69,6 +70,7 @@ export default {
     </b-col>
     </b-row>
   </div>
+
 </template>
 
 <script>
@@ -116,3 +118,4 @@ export default {
 // },
 // };
 </script>
+
