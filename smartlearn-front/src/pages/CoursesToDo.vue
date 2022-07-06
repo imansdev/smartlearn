@@ -9,18 +9,6 @@
           <th scope="col">Deadline</th>
           <th scope="col">Complete/kill</th>
           <th scope="col">Prize</th>
-          <th scope="col">{{gh}}</th>
-          <!-- <th scope="col"><div>
-    <span >{{
-      f.data
-    }}</span>
-  </div></th> -->
-          <!-- <th scope="col"><div v-for="(val, index) in f.data" :key="index">
-        <div>
-          <strong>{{ val.key }}</strong>
-        </div>
-        <div>{{ val.value }}</div>
-      </div></th> -->
         </tr>
       </thead>
       <tbody>
@@ -40,7 +28,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import CourseRow from "./CourseRow";
+import CourseRow from "../components/CourseRow";
 // import Kokg from "./Kokg";
 
 const args = {
@@ -49,35 +37,18 @@ const args = {
   methodArgs: "",
 };
 export default {
-  name: "Courses",
+  name: "CoursesToDo",
   components: {
     CourseRow
   },
   computed: {
-    ...mapGetters("drizzle", ["drizzleInstance", "isDrizzleInitialized"]),
-    ...mapGetters("contracts", ["getContractData","contractInstances"]),
+    ...mapGetters("drizzle", ["isDrizzleInitialized"]),
+    ...mapGetters("contracts", ["getContractData"]),
     rawCourses() {
       return this.getContractData({
         contract: args.contractName,
         method: args.method,
       });
-    },
-    // isSt() {
-    //   return !this.contractInstances[this.contractName].synced
-    // },
-    gh() {
-    //   // let compo = 'Kokg'
-    //   let f = this.getContractData({
-    //     contract: "SmartLearn",
-    //     method: "getTotal",
-    //   });
-    //   // f = Object.entries(f)
-    //   //   .filter(([key]) => /^\D/.test(key))
-    //   //   .map(([key, value]) => ({ key, value }));
-    //   return{
-    //     data: f
-    //   }
-      return this.contractInstances[args.contractName]
     },
     courses() {
       let outputTaks = [...this.rawCourses];

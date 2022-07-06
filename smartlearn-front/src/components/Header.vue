@@ -1,5 +1,5 @@
 <template>
-  <b-navbar toggleable="sm" type="light" variant="" class="bgHeader">
+  <b-navbar :class="isHome ? 'bgHeader' : 'bgHeaderb'">
     <div class=" container" style="min-height: 10vh">
       <b-navbar-brand>
         <img
@@ -33,6 +33,7 @@
             ></b-button>
           </b-input-group-prepend>
           <b-form-input
+            @keyup.enter="onSubmit"
             id="rcorners2"
             v-model="donateAmount"
             placeholder="Donate amount in ether"
@@ -103,12 +104,13 @@ import { mapGetters } from "vuex";
 export default {
   computed: {
     ...mapGetters("drizzle", ["drizzleInstance"]),
-    ...mapGetters("accounts", ["activeAccount", "activeBalance"]),
+    ...mapGetters("accounts", ["activeAccount"]),
   },
   data() {
     return {
       message: "",
       donateAmount: "",
+      isHome: false,
     };
   },
   methods: {
@@ -131,6 +133,20 @@ export default {
         );
       }
     },
+    setIsHome() {
+      let url = this.$router.history.current.path;
+      // eslint-disable-next-line no-console
+      console.log({ url });
+      this.isHome = ["/home"].includes(url);
+    },
+  },
+  watch: {
+    $route() {
+      this.setIsHome();
+    },
+  },
+  created() {
+    this.setIsHome();
   },
 };
 </script>
@@ -157,6 +173,9 @@ export default {
 }
 .bgHeader {
   background-color: #45f594;
+}
+.bgHeaderb {
+  background-color: #f5455f;
 }
 .imanlg {
   box-shadow: -0px 0px 3px #f5aa45;

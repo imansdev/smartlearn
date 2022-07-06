@@ -13,7 +13,11 @@
       {{ course.description }}
     </b-col>
     <b-button>button</b-button>
-    
+    <router-link :to="`/Add/${course._id}`"
+      ><b-row>
+        <b-button>add</b-button>
+      </b-row></router-link
+    >
   </div>
 </template>
 
@@ -27,9 +31,9 @@ export default {
     };
   },
   methods: {
-    navigateToHome() {
-      this.$router.push({ path: "/" });
-    },
+    // navigateToHome() {
+    //   this.$router.push({ path: "/" });
+    // },
   },
   async created() {
     try {
@@ -57,7 +61,8 @@ export default {
 }
 .lesson-content .video {
   position: absolute;
-  left: 0; right: 0;
+  left: 0;
+  right: 0;
   width: 100%;
   height: 100%;
 }

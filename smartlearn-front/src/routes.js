@@ -2,7 +2,8 @@ import Home from './pages/Home.vue';
 import Contact from './pages/ContactUs.vue'
 import CourseDetail from './pages/CourseDetail.vue'
 // import TotalUserToSiteo from './components/totalUserToSite.vue'
-import AddToDoCourse from './pages/AddToDoCourse.vue'
+import AddCourseToDo from './pages/AddCourseToDo.vue'
+import CourseToDo from './pages/CoursesToDo.vue'
 export default [
     
 
@@ -18,16 +19,20 @@ export default [
         path: '/contact',
         component: Contact
     },
-    // {
-    //     path: '/yyy',
-    //     component: TotalUserToSiteo
-    // },
+    {
+        path: '/mycourses',
+        component: CourseToDo
+    },
+    {
+        path: '/yyy',
+        component: AddCourseToDo
+    },
     {
         path: '/courses/:id',
         component: CourseDetail
     },
     {
         path: '/Add',
-        component: AddToDoCourse
+        component: AddCourseToDo
     }
 ]

@@ -1,10 +1,9 @@
 <template>
   <tr>
     <th scope="row">{{ courseID }}</th>
-    <td>{{ course.description }}</td>
+    <td class="opo">{{ course.description }}</td>
     <td>{{ beautyDatetime(course.createdAt) }}</td>
     <td>{{ beautyDatetime(course.deadline) }}</td>
-    <!-- <td><drizzle-contract contractName="SmartLearn" method="getTotal" /></td> -->
     <td>
       <div v-if="course.completed">
         <i class="fa-regular fa-square-check"></i> Completed At
@@ -31,10 +30,10 @@
         </b-button>
       </div>
     </td>
-    <th scope="col">
+    <th scope="col" class="yyi">
       <span>{{ prizeValueString(course.value) }}</span>
     </th>
-    <th scope="col">
+    <th scope="col" class="yyi">
       <i class="fa-brands fa-ethereum"></i>
     </th>
 
@@ -71,19 +70,7 @@ export default {
   },
   computed: {
     ...mapGetters("drizzle", ["drizzleInstance"]),
-    ...mapGetters("accounts", ["activeAccount", "activeBalance"]),
   },
-  // mounted() {
-  //   this.$drizzleEvents.$on("drizzle/contractEvent", (payload) => {
-  //    // eslint-disable-next-line no-console
-  //    console.log("event catched", payload);
-  //     // const { Financable, TotalTerigel, data } = payload;
-
-      
-  //     // Do something with payload data
-  //   });
-
-  // },
   methods: {
     doAction(_method) {
       this.drizzleInstance.contracts[this.contractName].methods[
@@ -133,3 +120,16 @@ export default {
   }),
 };
 </script>
+
+<style >
+.opo{
+  height: 80px;
+  /* width: 10px; */
+  background-color: aquamarine;
+}
+.yyi{
+  width: 0px;
+  padding-left: 0px;
+  padding: 0px;
+}
+</style>

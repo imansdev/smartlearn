@@ -50,7 +50,6 @@ export default {
   name: "kolo",
   computed: {
     ...mapGetters("drizzle", ["drizzleInstance"]),
-    ...mapGetters("accounts", ["activeAccount", "activeBalance"]),
   },
   data() {
     return {

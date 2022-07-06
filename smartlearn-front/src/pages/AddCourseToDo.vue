@@ -162,13 +162,13 @@ const args = {
 };
 
 export default {
-  name: "AddCourseForm",
+  name: "AddCourseToDo",
   components: {
     TotalUserToSite,
   },
   computed: {
     ...mapGetters("drizzle", ["drizzleInstance", "isDrizzleInitialized"]),
-    ...mapGetters("accounts", ["activeAccount", "activeBalance"]),
+    ...mapGetters("accounts", ["activeAccount"]),
   },
   methods: {
     defaultAddress() {

@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
 /// @title Accounting and banking helper functions
 contract Financable is ReentrancyGuard {
-    address constant acc = 0xF615Ddf8eb23Cd2Bb5d9D35E7a83545EB8282478;
+    address constant acc = 0x6Bb363Fe7770fa6c1Ee6665407EA474d4418Cdb7;
 
     // event TotalTerigel();
 
