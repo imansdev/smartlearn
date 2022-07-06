@@ -1,5 +1,5 @@
 import Home from './pages/Home.vue';
-import Contact from './pages/ContactUs.vue'
+import Contact from './pages/Courses.vue'
 import CourseDetail from './pages/CourseDetail.vue'
 // import TotalUserToSiteo from './components/totalUserToSite.vue'
 import AddCourseToDo from './pages/AddCourseToDo.vue'
@@ -16,23 +16,19 @@ export default [
         component: Home
     },
     {
-        path: '/contact',
+        path: '/courses',
         component: Contact
     },
     {
-        path: '/mycourses',
+        path: '/todo',
         component: CourseToDo
     },
     {
-        path: '/yyy',
+        path: '/add',
         component: AddCourseToDo
     },
     {
         path: '/courses/:id',
         component: CourseDetail
     },
-    {
-        path: '/Add',
-        component: AddCourseToDo
-    }
 ]

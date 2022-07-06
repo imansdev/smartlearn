@@ -3,10 +3,9 @@ import App from './App.vue'
 import Vuex from 'vuex'
 import VueRouter from 'vue-router'
 import Routes from './routes'
-
-
 import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
+// import './scss/abstracts/_custom-variables.scss'
 import 'bootstrap/dist/css/bootstrap.css';
 
 Vue.use(VueRouter);

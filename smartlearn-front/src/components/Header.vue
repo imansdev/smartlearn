@@ -1,40 +1,47 @@
 <template>
-  <b-navbar :class="isHome ? 'bgHeader' : 'bgHeaderb'">
-    <div class=" container" style="min-height: 10vh">
-      <b-navbar-brand>
-        <img
-          src="../assets/logo.png"
-          width="50"
-          height="50"
-          class="d-inline-block"
-          alt="smartlearn"
-        />
-        <b class="subtitle"><strong class="mt-lg-5">martlearn</strong> </b>
-      </b-navbar-brand>
+  <b-navbar class="bgHeaderb">
+    <div class="  container" style="min-height: 10vh">
+      <!-- <b-navbar-brand>
+        <img src="../assets/logo.png" width="45" height="45" alt="smartlearn" />
+      </b-navbar-brand> -->
+      <!-- <b class="ssize"><strong class="mt-lg-5 ">s</strong></b> -->
+      <b-button id="hkh" tag="router-link" to="/home" variant="outline">
+        <p class="ssize">s</p>
+        <b class="subtitle bgtitle"
+          ><strong class=" "> martlearn</strong>
+        </b></b-button
+      >
 
       <b-collapse id="navbar-toggle-collapse" is-nav>
         <b-navbar-nav class="ml-auto">
-          <b-nav-item><router-link :to="'/home'">Home</router-link></b-nav-item>
           <b-nav-item
-            ><router-link :to="'/contact'"
-              >Conttact to US</router-link
-            ></b-nav-item
+            ><b-button tag="router-link" to="/courses" variant="outline">
+              <b class="colorall">Courses</b>
+            </b-button></b-nav-item
           >
-          <b-nav-item
-            ><router-link :to="'/yyy'">detail</router-link></b-nav-item
-          >
+          <b-nav-item>
+            <b-button tag="router-link" to="/add" variant="outline"
+              ><b class="colorall">Add To Do</b>
+            </b-button>
+          </b-nav-item>
+          <b-nav-item>
+            <b-button tag="router-link" to="/todo" variant="outline"
+              ><b class="colorall">Course To Do</b>
+            </b-button>
+          </b-nav-item>
         </b-navbar-nav>
       </b-collapse>
       <div>
         <b-input-group class="hjl">
           <b-input-group-prepend>
             <b-button @click.prevent="onSubmit" variant="outline-dark">
-              <i class="fa-solid fa-circle-dollar-to-slot"></i
+              <b class="coloric"
+                ><i class="fa-brands fa-ethereum"></i></b
             ></b-button>
           </b-input-group-prepend>
           <b-form-input
             @keyup.enter="onSubmit"
-            id="rcorners2"
+            id="rcorners"
             v-model="donateAmount"
             placeholder="Donate amount in ether"
             type="text"
@@ -42,8 +49,8 @@
         </b-input-group>
       </div>
       <div right>
-        <b-button v-b-toggle.sidebar-no-header variant="outline-dark"
-          >Any offer ?</b-button
+        <b-button v-b-toggle.sidebar-no-header variant="outline-dark hhk">
+          <b class="coloroffer">Any Offer ?</b></b-button
         >
         <b-sidebar
           id="sidebar-no-header"
@@ -152,13 +159,16 @@ export default {
 </script>
 
 <style>
-#rcorners2 {
-  border-radius: 6px;
-  border: 1px solid #0d0d0c;
+#hkh {
+  display: flex;
+}
+#rcorners {
+  border-radius: 4px;
+  border: 1px solid black;
   padding: 18px;
   width: 212px;
   height: 0px;
-  box-shadow: inset 0 0 8px #f0f002, inset 0 0 8px #f0f002;
+  box-shadow: inset 0 0 8px black, inset 0 0 8px black;
 }
 .around {
   width: 100%;
@@ -171,13 +181,37 @@ export default {
   text-align: center;
   padding-right: 50px;
 }
+.bgtitle {
+  padding-top: 27px;
+  /* padding-left: -100em; */
+  color: white;
+  /* margin-left: -15px; */
+  padding-right: 50px;
+}
+.colorall {
+  color: white;
+}
 .bgHeader {
-  background-color: #45f594;
+  background-color: white;
 }
 .bgHeaderb {
-  background-color: #f5455f;
+  background-color: black;
+}
+.hhk {
+  color: #f5aa45;
+}
+.coloric {
+  color: #fcd200da;
 }
 .imanlg {
   box-shadow: -0px 0px 3px #f5aa45;
+}
+.coloroffer {
+  color: #fcd200da;
+}
+.ssize {
+  color: #fcd200da;
+  font-size: 40px;
+  margin-left: -50px;
 }
 </style>

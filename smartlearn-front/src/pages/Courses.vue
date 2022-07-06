@@ -62,22 +62,21 @@ export default {
     <b-row>
     <h1 class="title">courses</h1>
 
-    <b-col xl="9">
+    <b-col xl="12">
       <b-row v-for="course in courses" :key="course._id" class="py-3">
-        <ExploreCard :course="course" />
+        <ExploreCourse :course="course" />
       </b-row>
     </b-col>
-    <b-col xl="3"><b-card></b-card></b-col>
     </b-row>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import ExploreCard from "../components/ExploreCard.vue";
+import ExploreCourse from "../components/ExploreCourse.vue";
 
 export default {
-  components: { ExploreCard },
+  components: { ExploreCourse },
   data() {
     return {
       courses: [],

@@ -1,10 +1,10 @@
 <template>
-  <div style="margin: -1em -1em 0"> <!-- Remove navbar margin -->
-    <section class="hero is-primary is-halfheight">
-      <div class="hero-body has-text-centered">
+  <div style="margin: -40px -100%;,padding: 100px 100px;"> <!-- Remove navbar margin -->
+    <section class="bghome ">
+      <div class="text-center">
         <div class="container">
-          <h1 class="title">Welcome to Code</h1>
-          <p class="subtitle">An open source E-Learning platform!</p>
+          <h1 class="title colorw">Welcome to Smartlearn</h1>
+          <p class="subtitle">A Powerfull E-Learning Dapp</p>
           <p class="buttons is-centered">
             <b-button
               tag="router-link"
@@ -87,54 +87,17 @@
 </template>
 
 
-<script>
-export default {
-  data() { return {
-  } },
-  strings: {
-    en: {
-      welcome: 'Welcome to <A>Code',
-      welcomeSubtitle: 'An open source E-Learning platform!',
-      btnExplore: 'Explore courses',
-      btnClassroom: 'My classroom',
-      btnRegister: 'Register for free',
-      promoSkills: 'Gain new skills quickly',
-      promoSkillsText: 'We did our best to make sure our student will learn content as quickly as possible',
-      promoUptodate: 'Learn up-to-date technologies',
-      promoUptodateText: 'Unlike some other similar web sites, we offer fresh content only',
-      promoUzbeks: 'For uzbeks, by uzbeks',
-      promoUzbeksText: 'We are one of the very few learning platforms which have both uzbek content and quality',
-      dashboardCourses: 'Courses',
-      dashboardUsers: 'Registered users',
-      dashboardCompleted: 'Completed courses',
-      regTitle: 'Sign up now',
-      regText: 'Sign up today and build skills for tomorrow',
-      regBtn: 'Open register page',
-    },
-    uz: {
-      welcome: '<A>Code ga xush kelibsiz',
-      welcomeSubtitle: "Ochiq onlayn o'quv platformasi!",
-      btnExplore: "Kurslarni ko'rish",
-      btnClassroom: "Sinfxonaga o'tish",
-      btnRegister: "Ro'yhatdan o'tish",
-      promoSkills: "Yangi ko'nikmalarga tez erishing",
-      promoSkillsText: "Bizning o'quvchilarimiz kurslarimizi iloji boricha tez o'rganishi uchun harakat qilamiz",
-      promoUptodate: "Zamon bilan hamnafas bo'ling",
-      promoUptodateText: "Ba'zi o'xshash saytlardan farqli o'laroq, biz faqat yangi kontent taqdim etamiz",
-      promoUzbeks: "O'zbeklar tomonidan, o'zbeklar uchun",
-      promoUzbeksText: "Biz o'zbekcha kontenti bor juda kam onlayn platformalardan birimiz",
-      dashboardCourses: 'Kurslar',
-      dashboardUsers: "Ro'yxatdan o'tganlar",
-      dashboardCompleted: 'Bitiruvchilar',
-      regTitle: "Hoziroq ro'yhatdan o'ting",
-      regText: "Bugun ro'yhatdan o'ting va ertanggi kun uchun ko'nikmalarga ega bo'ling",
-      regBtn: "Ro'yhatdan o'tish sahifasi",
-    },
-  }
-}
-</script>
+
 
 <style>
+.colorw{
+  color: #fcd200da;
+}
+.bghome{
+  background-color: black;
+  height: 400px;
+  padding-top: 100px;
+}
 .promo {
   text-align: center;
 }
