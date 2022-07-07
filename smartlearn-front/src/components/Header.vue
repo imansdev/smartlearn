@@ -8,7 +8,7 @@
       <b-button id="hkh" tag="router-link" to="/home" variant="outline">
         <p class="ssize">s</p>
         <b class="subtitle bgtitle"
-          ><strong class=" "> martlearn</strong>
+          ><strong> martlearn</strong>
         </b></b-button
       >
 

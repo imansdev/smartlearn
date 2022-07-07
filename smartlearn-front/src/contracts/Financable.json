@@ -10,15 +10,15 @@
       "type": "receive"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.11+commit.d7f03943\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"stateMutability\":\"payable\",\"type\":\"fallback\"},{\"stateMutability\":\"payable\",\"type\":\"receive\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"title\":\"Accounting and banking helper functions\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Financable.sol\":\"Financable\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/security/ReentrancyGuard.sol\":{\"keccak256\":\"0x842ccf9a6cd33e17b7acef8372ca42090755217b358fe0c44c98e951ea549d3a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6cc5f36034a77d105263ae6d8cc18b16260b4a0f6cdb1a26f21ba3670fdd06dd\",\"dweb:/ipfs/QmdJrJ2LoG546BkfyZPta96BNmaVBfqZoh8kq7PqHuQyPk\"]},\"project:/contracts/Financable.sol\":{\"keccak256\":\"0x88ba908574faf36ee98a6b6bf9a3ae1bc6cea3270d3d3596647439822a06caab\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://99641bf0088f35284e9a46a95b8ff86b1d7a4b08f4cd9970f416aba1a55781a0\",\"dweb:/ipfs/QmS1p4JFwXJYGSHfT44mxXw2xXcJA1vopy48szKDKYhPHG\"]}},\"version\":1}",
-  "bytecode": "0x6080604052348015600f57600080fd5b50600160008190555060488060256000396000f3fe608060405236600d57600080fd5b600080fdfea2646970667358221220fff943cbf422ae970a001a1e8e7cebfffb2b100f5e7f8f9ea3b9c131164bb74364736f6c634300080b0033",
-  "deployedBytecode": "0x608060405236600d57600080fd5b600080fdfea2646970667358221220fff943cbf422ae970a001a1e8e7cebfffb2b100f5e7f8f9ea3b9c131164bb74364736f6c634300080b0033",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.11+commit.d7f03943\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"stateMutability\":\"payable\",\"type\":\"fallback\"},{\"stateMutability\":\"payable\",\"type\":\"receive\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"title\":\"Accounting and banking helper functions\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Financable.sol\":\"Financable\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/security/ReentrancyGuard.sol\":{\"keccak256\":\"0x842ccf9a6cd33e17b7acef8372ca42090755217b358fe0c44c98e951ea549d3a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6cc5f36034a77d105263ae6d8cc18b16260b4a0f6cdb1a26f21ba3670fdd06dd\",\"dweb:/ipfs/QmdJrJ2LoG546BkfyZPta96BNmaVBfqZoh8kq7PqHuQyPk\"]},\"project:/contracts/Financable.sol\":{\"keccak256\":\"0x2255b509ec54d18f936a9b6e8804188deee1160807676bb2f33036cc1c96365d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://bc86207440cbe8adb4602d26cbc4a337859729fffe6de7972932b13cbdcf5b83\",\"dweb:/ipfs/QmeWp9uMdTzuLgGF7Cf8Us1KFBjmTCwEEpr2WfXzEPrWmZ\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50600160008190555060488060256000396000f3fe608060405236600d57600080fd5b600080fdfea264697066735822122097154dd972cfd9b41d1e0bf82052d213b0eeba86a7c5143d8cf7b9d48ac98d2164736f6c634300080b0033",
+  "deployedBytecode": "0x608060405236600d57600080fd5b600080fdfea264697066735822122097154dd972cfd9b41d1e0bf82052d213b0eeba86a7c5143d8cf7b9d48ac98d2164736f6c634300080b0033",
   "immutableReferences": {},
   "generatedSources": [],
   "deployedGeneratedSources": [],
   "sourceMap": "180:874:6:-:0;;;;;;;;;;;;;1637:1:2;1742:7;:22;;;;180:874:6;;;;;;",
   "deployedSourceMap": "180:874:6:-:0;;;;;;1037:8;;;180:874;979:8;;",
-  "source": "// SPDX-License-Identifier: MIT\npragma solidity >=0.8.0 <0.9.0;\n\nimport \"@openzeppelin/contracts/security/ReentrancyGuard.sol\";\n\n/// @title Accounting and banking helper functions\ncontract Financable is ReentrancyGuard {\n    address constant acc = 0x6Bb363Fe7770fa6c1Ee6665407EA474d4418Cdb7;\n\n    // event TotalTerigel();\n\n    function payAnother(address anotherAddress,uint amountt) internal nonReentrant {\n        payable(anotherAddress).transfer(amountt);\n    }\n\n    function payUser(uint amount) internal nonReentrant {\n        payable(msg.sender).transfer(amount);\n    }\n\n    function payOwn(uint amounts) internal nonReentrant{\n        payable(acc).transfer(amounts);\n    }\n        \n\n\n\n\n\n\n\n\n        // if (total[_address] >= 1000000000000000000) {\n            // emit TotalTerigel();\n        // }\n        // if (transfer){\n        //     total=total+amounts;\n        // }\n\n    // Fallback funciton\n    // No direct payment allowed\n    fallback() external payable {\n        revert();\n    }\n\n    receive() external payable {\n        revert();\n    }\n}\n",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity >=0.8.0 <0.9.0;\n\nimport \"@openzeppelin/contracts/security/ReentrancyGuard.sol\";\n\n/// @title Accounting and banking helper functions\ncontract Financable is ReentrancyGuard {\n    address constant acc = 0xDD5Dd71602D4207Cf923B7608f1d1D9744773105;\n\n    // event TotalTerigel();\n\n    function payAnother(address anotherAddress,uint amountt) internal nonReentrant {\n        payable(anotherAddress).transfer(amountt);\n    }\n\n    function payUser(uint amount) internal nonReentrant {\n        payable(msg.sender).transfer(amount);\n    }\n\n    function payOwn(uint amounts) internal nonReentrant{\n        payable(acc).transfer(amounts);\n    }\n        \n\n\n\n\n\n\n\n\n        // if (total[_address] >= 1000000000000000000) {\n            // emit TotalTerigel();\n        // }\n        // if (transfer){\n        //     total=total+amounts;\n        // }\n\n    // Fallback funciton\n    // No direct payment allowed\n    fallback() external payable {\n        revert();\n    }\n\n    receive() external payable {\n        revert();\n    }\n}\n",
   "sourcePath": "/Users/iman/smartlearn/smartcontract/contracts/Financable.sol",
   "ast": {
     "absolutePath": "project:/contracts/Financable.sol",
@@ -122,7 +122,7 @@
               }
             },
             "value": {
-              "hexValue": "307836426233363346653737373066613663314565363636353430374541343734643434313843646237",
+              "hexValue": "307844443544643731363032443432303743663932334237363038663164314439373434373733313035",
               "id": 885,
               "isConstant": false,
               "isLValue": false,
@@ -135,7 +135,7 @@
                 "typeIdentifier": "t_address",
                 "typeString": "address"
               },
-              "value": "0x6Bb363Fe7770fa6c1Ee6665407EA474d4418Cdb7"
+              "value": "0xDD5Dd71602D4207Cf923B7608f1d1D9744773105"
             },
             "visibility": "internal"
           },
@@ -898,7 +898,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.7",
-  "updatedAt": "2022-07-06T06:54:00.868Z",
+  "updatedAt": "2022-07-07T00:58:36.358Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

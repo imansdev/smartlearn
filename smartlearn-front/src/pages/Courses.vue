@@ -61,7 +61,7 @@ export default {
 
   <div  class="container">
     <b-row>
-    <h1 class="title">courses</h1>
+    <h1 class="title colortitel">courses</h1>
 
     <b-col xl="12">
       <b-row v-for="course in courses" :key="course._id" class="py-3">
@@ -118,4 +118,9 @@ export default {
 // },
 // };
 </script>
+<style >
+.colortitel{
+  color: #fcd200da;
+}
+</style>
 
