@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isDrizzleInitialized">
+  <div class="text-dark" v-if="isDrizzleInitialized">
     <b-row class="py-3">
       <b-col xl="1"><i class="fa-brands fa-ethereum"></i></b-col>
       <b-col xl="7">
@@ -8,7 +8,7 @@
         </div>
       </b-col>
       <b-col xl="1">:</b-col>
-      <b-col class="text-dark" xl="1">
+      <b-col xl="1">
         {{ f }}
       </b-col>
     </b-row>
@@ -23,7 +23,7 @@
       </b-col>
 
       <b-col class="pt-2" xl="1">:</b-col>
-      <b-col class="hjl pt-2 text-dark" xl="1">
+      <b-col class="hjl pt-2" xl="1">
         <div >{{ g }}</div>
       </b-col>
     </b-row>
@@ -99,9 +99,9 @@ export default {
   
   width: 100%;
   height: 2px;
-  background-color: rgba(250, 0, 0, 0.894);
-  border: solid rgba(0, 0, 0, .15);
+  background-color: black;
+  border: solid black;
   border-width: 1px 0;
-  box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+  box-shadow: inset 0 .5em 1.5em black, inset 0 .125em .5em black;
 }
 </style>

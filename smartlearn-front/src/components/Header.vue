@@ -7,8 +7,8 @@
       <!-- <b class="ssize"><strong class="mt-lg-5 ">s</strong></b> -->
       <b-button id="hkh" tag="router-link" to="/home" variant="outline">
         <p class="ssize">s</p>
-        <b class="subtitle bgtitle"
-          ><strong> martlearn</strong>
+        <b class="subtitle bgtitle colorall"
+          ><strong>&nbsp;martlearn</strong>
         </b></b-button
       >
 
@@ -49,7 +49,7 @@
         </b-input-group>
       </div>
       <div right>
-        <b-button v-b-toggle.sidebar-no-header variant="outline-dark hhk">
+        <b-button v-b-toggle.sidebar-no-header variant="outline-dark">
           <b class="coloroffer">Any Offer ?</b></b-button
         >
         <b-sidebar
@@ -182,13 +182,17 @@ export default {
   padding-right: 50px;
 }
 .bgtitle {
+  letter-spacing: 2px;
   padding-top: 27px;
   /* padding-left: -100em; */
-  color: white;
+  /* color: white; */
   /* margin-left: -15px; */
   padding-right: 50px;
 }
-.colorall {
+.colorall:hover {
+  color: #fcd200da;
+}
+.colorall{
   color: white;
 }
 .bgHeader {
@@ -196,9 +200,6 @@ export default {
 }
 .bgHeaderb {
   background-color: black;
-}
-.hhk {
-  color: #f5aa45;
 }
 .coloric {
   color: #fcd200da;

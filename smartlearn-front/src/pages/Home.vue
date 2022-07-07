@@ -81,7 +81,7 @@
 
         <b-col
           >All available Courses that we offered are
-          <strong class="colorStrong">Free</strong> and and anyone can use the
+          <strong class="colorStrong">Free</strong> and anyone can use the
           Courses without paying any fees</b-col
         >
       </b-row>

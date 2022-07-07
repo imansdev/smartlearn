@@ -33,7 +33,7 @@
       </div>
 
       <div class="py-3">
-        <b-button type="submit" variant="outline-warning">Offer course</b-button>
+        <b-button type="submit" variant="outline-dark">Offer course</b-button>
       </div>
     </b-form-group>
     <!-- <div><Kokg /></div> -->

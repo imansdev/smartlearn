@@ -29,7 +29,7 @@
                       tag="router-link"
                       :to="`/courses/${course._id}`"
                       variant="outline-dark"
-                      >go</b-button
+                      >GO</b-button
                     >
                   </b-row>
                 </b-col>

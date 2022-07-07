@@ -126,7 +126,7 @@
               <b-col xl="4"></b-col>
               <b-col xl="4">
                 <b-row>
-                  <b-button type="submit" variant="outline-warning"
+                  <b-button type="submit" variant="outline-dark"
                     >Add &nbsp;
                     <b-icon><i class="fa-solid fa-indent"></i></b-icon>
                   </b-button>
@@ -215,16 +215,16 @@ export default {
 
 <style>
 .textSiteThanks{
-  color: #d61340;
+  color: #fcd200da;
 }
 .bgleftbox {
-  background: #cc45f5;
+  background: #fcd200da;
 }
 .titleBox {
   font-family: "Comic sans MS", "Avenir", Helvetica, Arial, sans-serif;
   /* -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; */
   font-size: 20px;
-  color: #0d18ed;
+  color: #fcd200da;
 }
 </style>

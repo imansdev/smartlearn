@@ -1,17 +1,20 @@
 <template>
   <div v-if="isDrizzleInitialized">
     <table class="table">
-      <thead>
+      <thead style="  text-align: center;" class="bar">
         <tr>
           <th scope="col">#</th>
           <th scope="col">Description</th>
           <th scope="col">Created At</th>
           <th scope="col">Deadline</th>
-          <th scope="col">Complete/kill</th>
+          <th scope="col">Complete&nbsp;&nbsp;/&nbsp;&nbsp;kill</th>
           <th scope="col">Prize</th>
+                    <th scope="col"></th>
+          <th scope="col">Punish</th>
+          <th scope="col">For&nbsp;Another</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody style="  text-align: center;">
         <CourseRow
           v-for="(course, index) in courses"
           :key="index"
@@ -79,3 +82,9 @@ export default {
   },
 };
 </script>
+<style>
+.bar{
+  color: #fcd200da;
+  font-size: 20px;
+}
+</style>

@@ -1,41 +1,82 @@
 <template>
   <tr>
-    <th scope="row">{{ courseID }}</th>
-    <td class="opo">{{ course.description }}</td>
-    <td>{{ beautyDatetime(course.createdAt) }}</td>
-    <td>{{ beautyDatetime(course.deadline) }}</td>
-    <td>
-      <div v-if="course.completed">
-        <i class="fa-regular fa-square-check"></i> Completed At
-        {{ timeSpent(course.finishedAt) }}
-      </div>
-      <div v-else-if="course.killed">
-        <i class="fa-regular fa-rectangle-xmark"></i> Killed
-      </div>
-      <div v-else-if="course.deadline * 1000 < new Date().getTime()">
-        {{ onKillSubmit() }}
-        <!-- <b-button
-          v-b-popover.hover.right="
-            'When your deadline course expires your prize will be killed'
-          "
-          size="sm"
-          variant="primary"
-          @click.prevent="onKillSubmit"
-          >Kill</b-button
-        > -->
-      </div>
-      <div v-else>
-        <b-button size="sm" variant="warning" @click.prevent="onCompleteSubmit">
-          Complete
-        </b-button>
-      </div>
+    <th style="color: #fcd200da" scope="row">{{ courseID }}</th>
+    <td style="color: black">
+      <strong>{{ course.description }}</strong>
     </td>
-    <th scope="col" class="yyi">
-      <span>{{ prizeValueString(course.value) }}</span>
+    <td style="color: black">
+      <strong>{{ beautyDatetime(course.createdAt) }}</strong>
+    </td>
+    <td style="color: black">
+      <strong>{{ beautyDatetime(course.deadline) }}</strong>
+    </td>
+    <td style="color: black">
+      <strong>
+        <div v-if="course.completed">
+          <i class="fa-regular fa-square-check"></i> Completed At
+          {{ timeSpent(course.finishedAt) }}
+        </div>
+        <div v-else-if="course.killed">
+          <i class="fa-regular fa-rectangle-xmark"></i> Killed
+        </div>
+        <div v-else-if="course.deadline * 1000 < new Date().getTime()">
+          <!-- {{ onKillSubmit() }} -->
+          <!-- v-b-popover.hover.right="
+            'When your deadline course expires your prize will be killed'
+          " -->
+          <b-button
+          size="sm"
+          variant="warning"
+          @click.prevent="onKillSubmit"
+          >&nbsp;&nbsp;&nbsp;Kill&nbsp;&nbsp;&nbsp;</b-button
+        >
+        </div>
+        <div v-else>
+          <b-button
+            size="sm"
+            variant="warning"
+            @click.prevent="onCompleteSubmit"
+          >
+            Complete
+          </b-button>
+        </div>
+      </strong>
+    </td>
+    <th style="color: black" scope="col">
+      <strong>
+        {{ prizeValueString(course.value) }}
+      </strong>
     </th>
-    <th scope="col" class="yyi">
-      <i class="fa-brands fa-ethereum"></i>
+    <th style="color: black" scope="col">
+      <strong><i class="fa-brands fa-ethereum"></i></strong>
     </th>
+    <td style="color: black">
+      <strong>
+        <div v-if="course.punishMe">
+          Active
+        </div>
+        <div v-else>Deactive</div>
+      </strong>
+    </td>
+    <td style="color: black">
+      <strong>
+        <div v-if="course.toAnother">
+          <b-button
+            v-b-popover.hover.top="course.anotherWallet"
+            :title="'To Address'"
+            size="sm"
+            variant="outline-dark"
+            ><strong class="yesStyle">Yes</strong></b-button
+          >
+          <!-- <b-collapse id="collapse-1" class="mt-2">
+            <p class="card-text">To Address</p>
+            {{ course.anotherWallet }}
+          </b-collapse> -->
+        </div>
+
+        <div v-else>No</div>
+      </strong>
+    </td>
 
     <td>
       <b-button
@@ -85,12 +126,13 @@ export default {
     onKillSubmit() {
       const method = "kill";
       this.doAction(method);
-      return "please confirmed the transaction";
+      // return "please confirmed the transaction";
     },
     onRemoveSubmit() {
       const method = "remove";
       this.doAction(method);
     },
+    showAnotherAddress() {},
     prizeValueString(_valueInWei) {
       const web3 = this.drizzleInstance.web3;
       const valueInWei = new web3.utils.BN(_valueInWei);
@@ -120,16 +162,11 @@ export default {
   }),
 };
 </script>
-
 <style >
-.opo{
-  height: 80px;
-  /* width: 10px; */
-  background-color: aquamarine;
+.yesStyle:hover{
+  color: white;
 }
-.yyi{
-  width: 0px;
-  padding-left: 0px;
-  padding: 0px;
+.yesStyle{
+  color: black;
 }
 </style>
