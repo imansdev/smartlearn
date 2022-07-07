@@ -64,7 +64,7 @@ export default {
   // components: {
   //   Kokg,
   // },
-  props: { g: Number },
+  props: { g: String },
   methods: {
     orderCourse() {
       const article = {

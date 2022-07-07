@@ -128,7 +128,7 @@
                 <b-row>
                   <b-button type="submit" variant="outline-dark"
                     >Add &nbsp;
-                    <b-icon><i class="fa-solid fa-indent"></i></b-icon>
+                    <icon><i class="fa-solid fa-indent"></i></icon>
                   </b-button>
                 </b-row>
               </b-col>

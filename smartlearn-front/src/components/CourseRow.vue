@@ -5,16 +5,22 @@
       <strong>{{ course.description }}</strong>
     </td>
     <td style="color: black">
-      <strong>{{ beautyDatetime(course.createdAt) }}</strong>
+      <strong
+        >{{ timeSpent(course.createdAt) }}
+        <p>({{ beautyDatetime(course.createdAt) }})</p></strong
+      >
     </td>
     <td style="color: black">
-      <strong>{{ beautyDatetime(course.deadline) }}</strong>
+      <strong
+        >{{ timeSpent(course.deadline) }}
+        <p>({{ beautyDatetime(course.deadline) }})</p></strong
+      >
     </td>
     <td style="color: black">
       <strong>
         <div v-if="course.completed">
           <i class="fa-regular fa-square-check"></i> Completed At
-          {{ timeSpent(course.finishedAt) }}
+          <p>({{ timeSpent(course.finishedAt) }})</p>
         </div>
         <div v-else-if="course.killed">
           <i class="fa-regular fa-rectangle-xmark"></i> Killed
@@ -24,12 +30,9 @@
           <!-- v-b-popover.hover.right="
             'When your deadline course expires your prize will be killed'
           " -->
-          <b-button
-          size="sm"
-          variant="warning"
-          @click.prevent="onKillSubmit"
-          >&nbsp;&nbsp;&nbsp;Kill&nbsp;&nbsp;&nbsp;</b-button
-        >
+          <b-button size="sm" variant="warning" @click.prevent="onKillSubmit"
+            >&nbsp;&nbsp;&nbsp;Kill&nbsp;&nbsp;&nbsp;</b-button
+          >
         </div>
         <div v-else>
           <b-button
@@ -147,8 +150,8 @@ export default {
       }
       const m = moment(timestamp * 1000);
       const mAbsolute = m.format("YYYY/MM/DD HH:mm:ss");
-      const mDiff = m.fromNow();
-      return `${mAbsolute} (${mDiff})`;
+      // const mDiff = m.fromNow();
+      return `${mAbsolute}`;
     },
     timeSpent(finish) {
       const finishTime = moment(finish * 1000);
@@ -162,11 +165,11 @@ export default {
   }),
 };
 </script>
-<style >
-.yesStyle:hover{
+<style>
+.yesStyle:hover {
   color: white;
 }
-.yesStyle{
+.yesStyle {
   color: black;
 }
 </style>
