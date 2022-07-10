@@ -35,8 +35,7 @@
         <b-input-group class="hjl">
           <b-input-group-prepend>
             <b-button @click.prevent="onSubmit" variant="outline-dark">
-              <b class="coloric"
-                ><i class="fa-brands fa-ethereum"></i></b
+              <b class="coloric"><i class="fa-brands fa-ethereum"></i></b
             ></b-button>
           </b-input-group-prepend>
           <b-form-input
@@ -49,21 +48,22 @@
         </b-input-group>
       </div>
       <div right>
-        <b-button v-b-toggle.sidebar-no-header variant="outline-dark">
+        <b-button v-b-toggle.sidebar variant="outline-dark">
           <b class="coloroffer">Any Offer ?</b></b-button
         >
         <b-sidebar
-          id="sidebar-no-header"
-          aria-labelledby="sidebar-no-header-title"
+          id="sidebar"
+          aria-labelledby="sidebar-title"
           no-header
           right
+          bg-variant="warning"
           shadow
         >
-          <template #default="{ hide }">
+          <template #default="{hide}">
             <b-form ref="form" @submit.prevent="sendEmail">
               <div class="px-3">
                 <div class="py-1">
-                  <b-button pill @click="hide">
+                  <b-button variant="outline" pill @click="hide">
                     <i class="fa-regular fa-circle-xmark"></i>
                   </b-button>
                 </div>
@@ -71,7 +71,7 @@
                   <p>
                     If you have any offer to improve this site please tell us
                   </p>
-                  <label><strong>your offer</strong> </label>
+                  <label><strong>Your offer</strong> </label>
                 </div>
                 <div class="py-1">
                   <b-form-textarea
@@ -84,11 +84,11 @@
                     rows="20"
                   ></b-form-textarea>
                 </div>
-                <div class="text-center py-4">
+                <div  class="pt-3">
                   <b-button
-                    size="lg"
+                  style="width:18em;"
                     block
-                    variant="primary"
+                    variant="outline-dark"
                     @click="hide"
                     type="submit"
                     value="Send"
@@ -192,7 +192,7 @@ export default {
 .colorall:hover {
   color: #fcd200da;
 }
-.colorall{
+.colorall {
   color: white;
 }
 .bgHeader {
@@ -203,9 +203,6 @@ export default {
 }
 .coloric {
   color: #fcd200da;
-}
-.imanlg {
-  box-shadow: -0px 0px 3px #f5aa45;
 }
 .coloroffer {
   color: #fcd200da;

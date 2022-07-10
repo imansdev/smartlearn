@@ -13,7 +13,7 @@
                     </div>
                     <b-input-group size="mb" class="mb-3">
                       <b-input-group-prepend is-text>
-                        <b-icon><i class="fa-solid fa-align-left"></i></b-icon>
+                        <span class="iconHeight"><i class="fa-solid fa-align-left"></i></span>
                       </b-input-group-prepend>
                       <b-form-input
                         v-model="description"
@@ -28,7 +28,7 @@
                     </div>
                     <b-input-group size="mb" class="mb-2">
                       <b-input-group-prepend is-text>
-                        <b-icon><i class="fa-brands fa-ethereum"></i></b-icon>
+                        <span class="iconHeight"><i class="fa-brands fa-ethereum"></i></span>
                       </b-input-group-prepend>
                       <b-form-input
                         v-b-popover.hover.right="
@@ -128,7 +128,7 @@
                 <b-row>
                   <b-button type="submit" variant="outline-dark"
                     >Add &nbsp;
-                    <icon><i class="fa-solid fa-indent"></i></icon>
+                    <i class="fa-solid fa-indent"></i>
                   </b-button>
                 </b-row>
               </b-col>
@@ -153,7 +153,7 @@
 <script>
 import { mapGetters } from "vuex";
 import moment from "moment";
-import TotalUserToSite from "../components/totalUserToSite.vue";
+import TotalUserToSite from '../components/TotalUserToSite.vue'
 
 const args = {
   contractName: "SmartLearn",
@@ -214,6 +214,9 @@ export default {
 </script>
 
 <style>
+.iconHeight{
+  min-height: auto;
+}
 .textSiteThanks{
   color: #fcd200da;
 }

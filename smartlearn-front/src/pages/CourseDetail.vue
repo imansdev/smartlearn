@@ -1,36 +1,56 @@
 <template>
   <div class="container">
     <b-row>
-      <b-col xl="">
-        <b-embed
-          type="iframe"
-          width="640"
-          height="360"
-          :src="`https://www.youtube.com/embed/${course.video}`"
-          allowfullscreen
-        ></b-embed>
-      </b-col>
-      <b-col class="text-center">
-        <b-button
-          id="show-btn"
-          @click="$bvModal.show('modal-scoped')"
-          variant="outline-warning"
+      <b-col >
+        <b-row>
+          <b-embed
+            type="iframe"
+            width="640"
+            height="360"
+            :src="`https://www.youtube.com/embed/${course.video}`"
+            allowfullscreen
+          ></b-embed>
+        </b-row>
+        <b-row>
+          <strong
+            ><p
+              style="text-shadow: 0 0 3px black; font-size: 30px; color:#fcd200da;"
+              class="pt-3"
+            >
+              Wellcome
+            </p></strong
+          >
+          <p style="font-size: 20px;">{{ course.description }}</p></b-row
         >
-          Add this course to Course To Do
-        </b-button>
+        <!-- <iframe width="853" height="480" src="https://www.youtube.com/embed/P6N9782MzFQ" frameborder="0" allowfullscreen ng-show="showvideo"></iframe> -->
+      </b-col>
+      <b-col >
+        <b-row>
+          <b-button
+            id="show-btn"
+            @click="$bvModal.show('modal-scoped')"
+            variant="outline-warning"
+          >
+            Add this course to Course To Do
+          </b-button>
 
-        <b-modal style="background-color:black;" id="modal-scoped" hide-footer>
-          <template #modal-header="{ }">
-            Fill this to Add
-            <!-- <b-button size="sm" variant="outline-danger" @click="close()">
-        Close Modal
-      </b-button> -->
-          </template>
-          <div class="d-block text-center">
-            <div v-if="isDrizzleInitialized" class="container py-1">
-              <b-form inline class="row" @submit.prevent="onSubmit">
-                <div class="pb-3">
-                  <!-- <b-row>
+          <b-modal
+            header-class="modalHeader"
+            content-class="modalContent"
+            id="modal-scoped"
+            hide-footer
+          >
+            <template #modal-header>
+              <div style="font-size:30px;">
+                FILL UP
+              </div>
+            </template>
+            <template #default>
+              <div class="d-block text-center">
+                <div v-if="isDrizzleInitialized" class="container py-1">
+                  <b-form inline class="row" @submit.prevent="onSubmit">
+                    <div class="pb-3">
+                      <!-- <b-row>
                     <b-col xl="6">
                       <strong>Do you want to encourage someone else ?</strong>
                       <p>
@@ -49,104 +69,126 @@
                       </p>
                     </b-col>
                   </b-row> -->
-                  <b-row>
-                    <div>
-                      <div class="pb-3  titleBox">
-                        <strong>set prize</strong>
-                      </div>
-                      <b-input-group size="mb" class="mb-2">
-                        <b-input-group-prepend is-text>
-                          <b-icon><i class="fa-brands fa-ethereum"></i></b-icon>
-                        </b-input-group-prepend>
-                        <b-form-input
-                          v-b-popover.hover.right="
-                            'The minimum prize must be greater than 0.1 eth (not equal)'
-                          "
-                          id="datepicker-valid"
-                          v-model="prize"
-                          :state="prize >= 0.1"
-                          class="mb-2"
-                          placeholder="prize amount"
-                          type="text"
-                        ></b-form-input>
-                      </b-input-group>
-                    </div>
-                  </b-row>
-                  <b-row>
-                    <b-col class="pb-4" xl="6">
-                      <div>
-                        <b-form-checkbox
-                          size="lg"
-                          v-model="toAnother"
-                          name="check-another-wallet"
-                          switch
+                      <b-row>
+                        <div>
+                          <div class="pb-3  titleBox">
+                            <strong>set prize</strong>
+                          </div>
+                          <b-input-group size="mb" class="mb-2">
+                            <b-input-group-prepend is-text>
+                              <span class="iconHeightt"
+                                ><i class="fa-brands fa-ethereum"></i
+                              ></span>
+                            </b-input-group-prepend>
+                            <b-form-input
+                              v-b-popover.hover.right="
+                                'The minimum prize must be greater than 0.1 eth (not equal)'
+                              "
+                              id="datepicker-valid"
+                              v-model="prize"
+                              :state="prize >= 0.1"
+                              class="mb-2"
+                              placeholder="prize amount"
+                              type="text"
+                            ></b-form-input>
+                          </b-input-group>
+                        </div>
+                      </b-row>
+                      <b-row>
+                        <b-col class="pb-4" xl="6">
+                          <div>
+                            <b-form-checkbox
+                              size="lg"
+                              v-model="toAnother"
+                              name="check-another-wallet"
+                              switch
+                            >
+                              &nbsp;&nbsp;toAnother
+                            </b-form-checkbox>
+                          </div></b-col
                         >
-                          &nbsp;&nbsp;toAnother
-                        </b-form-checkbox>
-                      </div></b-col
-                    >
 
-                    <b-col class="pb-4" xl="6">
-                      <div>
-                        <b-form-checkbox
-                          size="lg"
-                          v-model="punishMe"
-                          name="check-punish"
-                          switch
-                        >
-                          &nbsp;&nbsp;punishMe
-                        </b-form-checkbox>
-                      </div>
-                    </b-col>
-                  </b-row>
-                  <b-row>
-                    <div v-if="toAnother === true">
-                      <b-form-input
-                        v-b-popover.hover.top="''"
-                        v-model="anotherWallet"
-                        :state="anotherWallet.length == '42'"
-                        class="mb-2"
-                        placeholder="another address"
-                        style="width: 458px; height: 30px;"
-                      ></b-form-input>
+                        <b-col class="pb-4" xl="6">
+                          <div>
+                            <b-form-checkbox
+                              size="lg"
+                              v-model="punishMe"
+                              name="check-punish"
+                              switch
+                            >
+                              &nbsp;&nbsp;punishMe
+                            </b-form-checkbox>
+                          </div>
+                        </b-col>
+                      </b-row>
+                      <b-row>
+                        <div v-if="toAnother === true">
+                          <b-form-input
+                            v-b-popover.hover.top="''"
+                            v-model="anotherWallet"
+                            :state="anotherWallet.length == '42'"
+                            class="mb-2"
+                            placeholder="another address"
+                            style="width: 458px; height: 30px;"
+                          ></b-form-input>
+                        </div>
+                        <div v-else>{{ defaultAddress() }}</div>
+                      </b-row>
                     </div>
-                    <div v-else>{{ defaultAddress() }}</div>
-                  </b-row>
-                </div>
-                <!-- <b-row>
+                    <!-- <b-row>
                   <b-col xl="4"></b-col>
                   <b-col xl="4">
                     <b-row>
                       <b-button type="submit" variant="outline-dark"
                         >Add &nbsp;
-                        <b-icon><i class="fa-solid fa-indent"></i></b-icon>
+
                       </b-button>
                     </b-row>
                   </b-col>
                   <b-col xl="4"></b-col>
                 </b-row> -->
 
-                <b-button
-                  class="mt-3"
-                  @click="$bvModal.hide('bv-modal-example')"
-                  type="submit"
-                  block
-                  >Add</b-button
-                >
-              </b-form>
-            </div>
+                    <b-button
+                      class="mt-3"
+                      @click="$bvModal.hide('modal-scoped')"
+                      type="submit"
+                      variant="outline-warning"
+                      block
+                      >Add</b-button
+                    >
+                  </b-form>
+                </div>
 
-            <div v-else>
-              <p>Loading...</p>
-            </div>
-          </div>
-        </b-modal>
-      </b-col>
-    </b-row>
-    <b-row>
-      <b-col>
-        {{ course.name }}
-        {{ course.description }}
+                <div v-else>
+                  <p>Loading...</p>
+                </div>
+              </div>
+            </template>
+          </b-modal>
+        </b-row>
+        <b-row>
+          <strong
+            ><p style="color:#fcd200da" class="pt-3">
+              <i class="fa-solid fa-angles-right"></i>
+              {{ course.name }}
+            </p></strong
+          >
+          <strong
+            ><p style="color:#fcd200da" class="pt-3">
+              <i class="fa-solid fa-angles-right"></i>
+              {{ course.deadline }} WEEKS
+            </p></strong
+          >
+          <strong
+            ><p style="color:#fcd200da" class="pt-3">
+              <i class="fa-solid fa-angles-right"></i>
+              {{ course.languageTo }}
+            </p></strong
+          >
+        </b-row>
+        <b-row>
+
+        </b-row>
       </b-col>
     </b-row>
   </div>
@@ -230,7 +272,20 @@ export default {
   },
 };
 </script>
+<style scoped>
+.iconHeightt {
+  min-height: auto;
+}
 
+::v-deep .modalHeader > {
+  background: black;
+  color: #fcd200da;
+}
+::v-deep .modalContent {
+  background: black;
+  color: #fcd200da;
+}
+</style>
 <!-- <style>
 .lesson-content {
   max-width: 640px !important;

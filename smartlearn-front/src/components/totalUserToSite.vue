@@ -9,7 +9,7 @@
       </b-col>
       <b-col xl="1">:</b-col>
       <b-col xl="1">
-        {{ f }}
+        {{ totalContribution }}
       </b-col>
     </b-row>
     <div class="b-divider"></div>
@@ -24,13 +24,13 @@
 
       <b-col class="pt-2" xl="1">:</b-col>
       <b-col class="hjl pt-2" xl="1">
-        <div >{{ g }}</div>
+        <div >{{ countOfOffer }}</div>
       </b-col>
     </b-row>
 
-    <div v-if="g >= 1">
+    <div v-if="countOfOffer >= 1">
     <div class="b-divider"></div>
-      <Kolo :g="g" />
+      <OfferCourse :countOfOffer="countOfOffer" />
     </div>
   </div>
   <div v-else>Loading...</div>
@@ -38,7 +38,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import Kolo from "./kolo.vue";
+import OfferCourse from "./OfferCourse.vue";
 const argst = {
   contractName: "SmartLearn",
   method: "reachTotal",
@@ -51,34 +51,35 @@ const argsy = {
 };
 export default {
   components: {
-    Kolo,
+    OfferCourse,
   },
   methods: {},
   computed: {
     ...mapGetters("drizzle", ["isDrizzleInitialized"]),
     ...mapGetters("contracts", ["getContractData"]),
-    f() {
+
+    totalContribution() {
       const wei = 1e18;
       // const web3 = this.drizzleInstance.web3;
-      let fh = this.getContractData({
+      let amount = this.getContractData({
         contract: "SmartLearn",
         method: "getTotal",
       });
 
-      return fh / wei;
+      return amount / wei;
       // web3.utils.fromWei(new web3.utils.BN(fh));
 
       // return this.contractInstances[args.contractName].getCourses
     },
 
-    g() {
+    countOfOffer() {
       // const web3 = this.drizzleInstance.web3;
-      let fg = this.getContractData({
+      let counter = this.getContractData({
         contract: "SmartLearn",
         method: "reachTotal",
       });
 
-      return fg;
+      return counter;
 
       // return this.contractInstances[args.contractName].getCourses
     },

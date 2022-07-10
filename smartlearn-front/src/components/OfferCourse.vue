@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- <div>{{g}}</div> -->
-    <b-form-group @submit.prevent="orderCourse">
+    <b-form inline class="row" @submit.prevent="orderCourse">
       <div class="pt-2 pb-1"><i class="fa-solid fa-link"></i></div>
       <div class="pb-3 pt-1">
         <b-form-input
@@ -35,7 +35,7 @@
       <div class="py-3">
         <b-button type="submit" variant="outline-dark">Offer course</b-button>
       </div>
-    </b-form-group>
+    </b-form>
     <!-- <div><Kokg /></div> -->
 
   </div>
@@ -44,10 +44,9 @@
 <script>
 import { mapGetters } from "vuex";
 import axios from "axios";
-// import Kokg from "./totalUserToSite.vue";
 
 export default {
-  name: "kolo",
+  name: "OfferCourse",
   computed: {
     ...mapGetters("drizzle", ["drizzleInstance"]),
   },
@@ -64,7 +63,7 @@ export default {
   // components: {
   //   Kokg,
   // },
-  props: { g: String },
+  props: { countOfOffer: Number },
   methods: {
     orderCourse() {
       const article = {
@@ -76,10 +75,9 @@ export default {
       axios
         .post("http://127.0.0.1:8000/api/v1/fcourses/", article)
         .then((response) => (this.articleId = response.data.id));
-      // let i =this.g--;
       this.drizzleInstance.contracts[this.contractName].methods[
         this.method
-      ].cacheSend(this.g);
+      ].cacheSend(this.countOfOffer);
     },
   },
 };

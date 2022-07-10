@@ -25,7 +25,7 @@
               <b-button
                 class="buttonstyle"
                 tag="router-link"
-                to="/todo"
+                to="/add"
                 variant="outline-secondary"
                 inverted
               >
@@ -136,6 +136,9 @@
 .bgdownhome {
   text-align: center;
   background-color: #fcd200da;
+  /* background: linear-gradient(45deg, #fcd200da 50%, transparent 50%),
+    linear-gradient(-45deg , #fcd200da 50%, transparent 50%);
+  background-size: 30px 30px; */
   padding-bottom: 2px;
   margin-bottom: 70px;
   /* min-height: 100px; */
