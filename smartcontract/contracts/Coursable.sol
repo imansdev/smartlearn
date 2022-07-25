@@ -8,8 +8,8 @@ contract Coursable is ReentrancyGuard {
     mapping(address => uint256) public courseCount;
     mapping(address => uint256) public arrived;
 
-    uint256 constant public target = 1000000000000000000;
-    // uint256 public arrived = 0;
+    uint256 public constant target = 1000000000000000000;
+
     function addToTotal(address _address, uint256 _amount)
         internal
         nonReentrant
@@ -22,28 +22,19 @@ contract Coursable is ReentrancyGuard {
 
     function addToReachTotal(uint256 _arrived) public {
         arrived[msg.sender] += _arrived;
-        while(arrived[msg.sender] >= target){
+        while (arrived[msg.sender] >= target) {
             courseCount[msg.sender] += 1;
-            arrived[msg.sender] -=target;
+            arrived[msg.sender] -= target;
         }
-        // if (total[msg.sender] >= target) {
-        //     courseCount[msg.sender] += 1;
-        //     target += target;
-        // }
-    }
-
-    function reachTotal() public view returns (uint256) {
-        // if(total[msg.sender] >= target){
-        //     courseCount[msg.sender]+=1;
-        //     target+=target;
-        // }
-        // courseCount[msg.sender] = 0;
-        return courseCount[msg.sender];
     }
 
     function decreaseCount(uint256 count) public {
         count -= 1;
         courseCount[msg.sender] = count;
+    }
+
+    function reachTotal() public view returns (uint256) {
+        return courseCount[msg.sender];
     }
 
     function getTotal() public view returns (uint256) {

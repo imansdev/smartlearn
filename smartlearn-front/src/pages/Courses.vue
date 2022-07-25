@@ -63,7 +63,7 @@ export default {
     <b-row>
     <h1 class="title colortitel">courses</h1>
 
-    <b-col xl="12">
+    <b-col xl="12" sm="12" md="12" lg="12">
       <b-row v-for="course in courses" :key="course._id" class="py-3">
         <ExploreCourse :course="course" />
       </b-row>
@@ -121,6 +121,7 @@ export default {
 <style >
 .colortitel{
   color: #fcd200da;
+  text-shadow: -1.5px 1.5px 2px #fcd200da;
 }
 </style>
 

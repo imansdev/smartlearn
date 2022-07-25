@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <b-row>
-      <b-col >
+      <b-col>
         <b-row>
           <b-embed
             type="iframe"
@@ -24,7 +24,7 @@
         >
         <!-- <iframe width="853" height="480" src="https://www.youtube.com/embed/P6N9782MzFQ" frameborder="0" allowfullscreen ng-show="showvideo"></iframe> -->
       </b-col>
-      <b-col >
+      <b-col>
         <b-row>
           <b-button
             id="show-btn"
@@ -72,7 +72,12 @@
                       <b-row>
                         <div>
                           <div class="pb-3  titleBox">
-                            <strong>set prize</strong>
+                            <strong
+                              v-b-popover.hover.top="
+                                'Each course you add has a wage of 0.1 ETH'
+                              "
+                              >set prize (+0.1 wage)</strong
+                            >
                           </div>
                           <b-input-group size="mb" class="mb-2">
                             <b-input-group-prepend is-text>
@@ -88,7 +93,7 @@
                               v-model="prize"
                               :state="prize >= 0.1"
                               class="mb-2"
-                              placeholder="prize amount"
+                              placeholder="Prize amount in ETH"
                               type="text"
                             ></b-form-input>
                           </b-input-group>
@@ -160,7 +165,17 @@
                 </div>
 
                 <div v-else>
-                  <p>Loading...</p>
+                  <strong style="color: #fcd200da;text-align: center;">
+                  <p>
+                    Is
+                    <a href="https://metamask.io/" target="_blank">MetaMask</a>
+                    extension installed on your browser?
+                  </p>
+                  <p>
+                    Is proper network selected in MetaMask?
+                  </p>
+                  <p>(Rinkeby Test Network or Localhost on port 8545)</p>
+                  </strong>
                 </div>
               </div>
             </template>
@@ -186,9 +201,7 @@
             </p></strong
           >
         </b-row>
-        <b-row>
-
-        </b-row>
+        <b-row> </b-row>
       </b-col>
     </b-row>
   </div>

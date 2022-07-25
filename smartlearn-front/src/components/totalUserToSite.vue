@@ -11,6 +11,7 @@
       <b-col xl="1">
         {{ totalContribution }}
       </b-col>
+      <!-- <b-col  xl="1"><strong>ETH</strong></b-col> -->
     </b-row>
     <div class="b-divider"></div>
 
@@ -23,9 +24,10 @@
       </b-col>
 
       <b-col class="pt-2" xl="1">:</b-col>
-      <b-col class="hjl pt-2" xl="1">
+      <b-col class="timesAlign pt-2" xl="1">
         <div >{{ countOfOffer }}</div>
       </b-col>
+      <!-- <b-col class="pt-2" xl="1"><strong>TIMES</strong></b-col> -->
     </b-row>
 
     <div v-if="countOfOffer >= 1">
@@ -93,7 +95,7 @@ export default {
 
 <style>
 
-.hjl{
+.timesAlign{
   text-align: center;
 }
 .b-divider {

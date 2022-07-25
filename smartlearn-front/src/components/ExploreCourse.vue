@@ -6,7 +6,7 @@
       style="max-width: 100%; max-height: 230px;"
     >
       <b-row no-gutters>
-        <b-col md="3" class="aroundcolor">
+        <b-col xl="3" sm="3" md="3" lg="3" class="aroundcolor">
           <b-card-img
             style="width: 266px; height: 230px;"
             :src="course.image"
@@ -14,7 +14,7 @@
             class=" imgaround "
           ></b-card-img>
         </b-col>
-        <b-col md="9" class="bgcourse">
+        <b-col xl="9" sm="9" md="9" lg="9" class="bgcourse">
           <b-card-body style="color:#fcd200da">
             <b-row
               ><span
@@ -31,8 +31,8 @@
               </b-card-text>
             </b-row>
             <b-row class="py-3">
-              <b-col md="3"></b-col>
-              <b-col md="6">
+              <b-col xl="3" sm="3" md="3" lg="3"></b-col>
+              <b-col xl="6" sm="6" md="6" lg="6">
                 <b-row>
                   <b-button
                     tag="router-link"
@@ -42,7 +42,7 @@
                   >
                 </b-row>
               </b-col>
-              <b-col md="3"></b-col>
+              <b-col xl="3" sm="3" md="3" lg="3"></b-col>
             </b-row>
             <b-row>
               <b-card-sub-title id="Cinformations" class="py-3 text-center">
@@ -55,7 +55,7 @@
                   {{ course.languageFrom }} &nbsp;&nbsp;&nbsp;
                 </div>
                 <div>
-                  Language TO
+                  Language To
                   {{ course.languageTo }} &nbsp;&nbsp;&nbsp;
                 </div>
                 <div>Created At {{ createdAt() }}</div>

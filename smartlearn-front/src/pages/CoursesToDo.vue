@@ -9,7 +9,7 @@
           <th scope="col">Deadline</th>
           <th scope="col">Complete&nbsp;&nbsp;/&nbsp;&nbsp;kill</th>
           <th scope="col">Prize</th>
-                    <th scope="col"></th>
+          <th scope="col"></th>
           <th scope="col">Punish</th>
           <th scope="col">For&nbsp;Another</th>
         </tr>
@@ -25,7 +25,17 @@
     </table>
   </div>
   <div v-else>
-    <p>Loading...</p>
+    <strong style="color: #fcd200da;text-align: center;">
+    <p>
+      Is
+      <a href="https://metamask.io/" target="_blank">MetaMask</a>
+      extension installed on your browser?
+    </p>
+    <p>
+      Is proper network selected in MetaMask?
+    </p>
+    <p>(Rinkeby Test Network or Localhost on port 8545)</p>
+    </strong>
   </div>
 </template>
 
@@ -42,7 +52,7 @@ const args = {
 export default {
   name: "CoursesToDo",
   components: {
-    CourseRow
+    CourseRow,
   },
   computed: {
     ...mapGetters("drizzle", ["isDrizzleInitialized"]),
@@ -66,7 +76,7 @@ export default {
           completed: course[6],
           killed: course[7],
           punishMe: course[8],
-          toAnother: course[9]
+          toAnother: course[9],
         };
       });
       return outputTaks;
@@ -83,7 +93,7 @@ export default {
 };
 </script>
 <style>
-.bar{
+.bar {
   color: #fcd200da;
   font-size: 20px;
 }

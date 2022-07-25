@@ -137,12 +137,16 @@ export default {
     },
     showAnotherAddress() {},
     prizeValueString(_valueInWei) {
+      const wei = 1e18;
+      const wage = 1e17;
       const web3 = this.drizzleInstance.web3;
       const valueInWei = new web3.utils.BN(_valueInWei);
-      if (valueInWei.toString() == "0") {
-        return "-";
-      }
-      return web3.utils.fromWei(valueInWei);
+      const restOfValue = (valueInWei - wage) / wei;
+      // const restOfValue = web3.utils.fromWei(valueInWei)-0.1;
+      // if (restOfValue.toString() == "0") {
+      //   return "-";
+      // }
+      return restOfValue;
     },
     beautyDatetime(timestamp) {
       if (timestamp == 0 || timestamp == "0") {

@@ -1,17 +1,16 @@
 <template>
   <b-navbar class="bgHeaderb">
-    <div class="  container" style="min-height: 10vh">
+    <div class="container">
       <!-- <b-navbar-brand>
         <img src="../assets/logo.png" width="45" height="45" alt="smartlearn" />
       </b-navbar-brand> -->
       <!-- <b class="ssize"><strong class="mt-lg-5 ">s</strong></b> -->
-      <b-button id="hkh" tag="router-link" to="/home" variant="outline">
+      <b-button id="brandStyle" tag="router-link" to="/home" variant="outline">
         <p class="ssize">s</p>
         <b class="subtitle bgtitle colorall"
           ><strong>&nbsp;martlearn</strong>
-        </b></b-button
-      >
-
+        </b>
+      </b-button>
       <b-collapse id="navbar-toggle-collapse" is-nav>
         <b-navbar-nav class="ml-auto">
           <b-nav-item
@@ -32,7 +31,7 @@
         </b-navbar-nav>
       </b-collapse>
       <div>
-        <b-input-group class="hjl">
+        <b-input-group class="donateStyle">
           <b-input-group-prepend>
             <b-button @click.prevent="onSubmit" variant="outline-dark">
               <b class="coloric"><i class="fa-brands fa-ethereum"></i></b
@@ -42,7 +41,7 @@
             @keyup.enter="onSubmit"
             id="rcorners"
             v-model="donateAmount"
-            placeholder="Donate amount in ether"
+            placeholder="Donate amount in ETH"
             type="text"
           ></b-form-input>
         </b-input-group>
@@ -159,7 +158,7 @@ export default {
 </script>
 
 <style>
-#hkh {
+#brandStyle {
   display: flex;
 }
 #rcorners {
@@ -170,14 +169,14 @@ export default {
   height: 0px;
   box-shadow: inset 0 0 8px black, inset 0 0 8px black;
 }
-.around {
-  width: 100%;
-  height: 38px;
+/* .around { */
+  /* width: 100%; */
+  /* height: 38px; */
   /* background-color: rgba(25, 208, 16, 0.894); */
-  border: black #101110;
+  /* border: black #101110; */
   /* border-width: 10px 0; */
-}
-.hjl {
+/* } */
+.donateStyle {
   text-align: center;
   padding-right: 50px;
 }
