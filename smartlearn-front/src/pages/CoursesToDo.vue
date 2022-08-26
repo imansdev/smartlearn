@@ -42,7 +42,6 @@
 <script>
 import { mapGetters } from "vuex";
 import CourseRow from "../components/CourseRow";
-// import Kokg from "./Kokg";
 
 const args = {
   contractName: "SmartLearn",

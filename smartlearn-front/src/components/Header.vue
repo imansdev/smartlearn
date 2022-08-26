@@ -142,7 +142,7 @@ export default {
     setIsHome() {
       let url = this.$router.history.current.path;
       // eslint-disable-next-line no-console
-      console.log({ url });
+      // console.log({ url });
       this.isHome = ["/home"].includes(url);
     },
   },
