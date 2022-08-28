@@ -24,7 +24,6 @@
                 }}</span></span
               ></b-row
             >
-
             <b-row class="preambleS">
               <b-card-text>
                 {{ course.description }}
@@ -47,8 +46,7 @@
             <b-row>
               <b-card-sub-title id="Cinformations" class="py-3 text-center">
                 <div>
-                  Estimated Time {{ course.deadline }} Weeks
-                  &nbsp;&nbsp;&nbsp;
+                  Estimated Time {{ course.deadline }} Weeks &nbsp;&nbsp;&nbsp;
                 </div>
                 <div>
                   Language From
@@ -59,7 +57,6 @@
                   {{ course.languageTo }} &nbsp;&nbsp;&nbsp;
                 </div>
                 <div>Created At {{ createdAt() }}</div>
-                <!-- {{ course.deadline }} weeks | {{ course.languageTo }} -->
               </b-card-sub-title>
             </b-row>
           </b-card-body>

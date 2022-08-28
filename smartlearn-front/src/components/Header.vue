@@ -1,10 +1,6 @@
 <template>
   <b-navbar class="bgHeaderb">
     <div class="container">
-      <!-- <b-navbar-brand>
-        <img src="../assets/logo.png" width="45" height="45" alt="smartlearn" />
-      </b-navbar-brand> -->
-      <!-- <b class="ssize"><strong class="mt-lg-5 ">s</strong></b> -->
       <b-button id="brandStyle" tag="router-link" to="/home" variant="outline">
         <p class="ssize">s</p>
         <b class="subtitle bgtitle colorall"
@@ -83,9 +79,9 @@
                     rows="20"
                   ></b-form-textarea>
                 </div>
-                <div  class="pt-3">
+                <div class="pt-3">
                   <b-button
-                  style="width:18em;"
+                    style="width:18em;"
                     block
                     variant="outline-dark"
                     @click="hide"
@@ -170,11 +166,11 @@ export default {
   box-shadow: inset 0 0 8px black, inset 0 0 8px black;
 }
 /* .around { */
-  /* width: 100%; */
-  /* height: 38px; */
-  /* background-color: rgba(25, 208, 16, 0.894); */
-  /* border: black #101110; */
-  /* border-width: 10px 0; */
+/* width: 100%; */
+/* height: 38px; */
+/* background-color: rgba(25, 208, 16, 0.894); */
+/* border: black #101110; */
+/* border-width: 10px 0; */
 /* } */
 .donateStyle {
   text-align: center;

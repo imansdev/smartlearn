@@ -1,10 +1,7 @@
 <template>
   <div>
-    <div
-      style="margin-top: -150px; padding-top: 100px;"
-    >
-      <!-- Remove navbar margin -->
-      <section class="bghome ">
+    <div style="margin-top: -150px; padding-top: 100px;">
+      <section class="bghome">
         <div class="text-center">
           <div class="container">
             <h1 class=" colorw">Welcome To Smartlearn</h1>
@@ -40,20 +37,13 @@
       </section>
     </div>
     <div class="b-divider"></div>
-    <!-- <div style="margin: -40px -100%;padding: 100px 100px; height: 1000px ;"> -->
     <section class="bgdownhome">
       <b-row style="padding-top: 5px;">
         <b-col>
-          <!-- <i class="fa-brands fa-connectdevelop "></i> -->
-          <!-- <i class="fa-solid fa-circle-nodes"></i>
-          <i class="fa-solid fa-circle-nodes "></i> -->
           <i class="fa-solid fa-diagram-project fa-3x"></i>
           <div class="fontfitch"><strong>Decentral</strong></div>
-          <!-- <i class="fa-brands fa-hive "></i> -->
         </b-col>
         <b-col>
-          <!-- <i class="fa-solid fa-user-secret "></i> -->
-          <!-- <i class="fa-solid fa-mask"></i> -->
           <i class="fa-solid fa-ghost fa-3x"></i>
           <div class="fontfitch"><strong>Anonymous</strong></div>
         </b-col>
@@ -62,13 +52,12 @@
           <i class="fa-brands fa-gratipay fa-3x"></i>
 
           <div class="fontfitch"><strong>Free Courses</strong></div>
-          <!-- <i class="fa-solid fa-user-secret fa-2xl"></i> -->
         </b-col>
       </b-row>
     </section>
     <div class="b-divider"></div>
     <div style="padding-top: 10px;">
-      <b-row class="text-center fontFitchExp" >
+      <b-row class="text-center fontFitchExp">
         <b-col
           >Smartlearn stores your Course To Do information in a completly
           <strong class="colorStrong">Decentralized</strong> by using the power
@@ -88,7 +77,6 @@
         >
       </b-row>
     </div>
-    <!-- </div> -->
   </div>
 </template>
 
@@ -99,7 +87,7 @@
   background-color: black;
   border: solid black;
   border-width: 1px 0;
-  box-shadow: inset 0 .5em 1.5em black, inset 0 .125em .5em black;
+  box-shadow: inset 0 0.5em 1.5em black, inset 0 0.125em 0.5em black;
 }
 .colorStrong {
   color: #fcd200da;

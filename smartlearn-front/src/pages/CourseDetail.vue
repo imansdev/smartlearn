@@ -22,7 +22,6 @@
           >
           <p style="font-size: 20px;">{{ course.description }}</p></b-row
         >
-        <!-- <iframe width="853" height="480" src="https://www.youtube.com/embed/P6N9782MzFQ" frameborder="0" allowfullscreen ng-show="showvideo"></iframe> -->
       </b-col>
       <b-col>
         <b-row>
@@ -50,25 +49,6 @@
                 <div v-if="isDrizzleInitialized" class="container py-1">
                   <b-form inline class="row" @submit.prevent="onSubmit">
                     <div class="pb-3">
-                      <!-- <b-row>
-                    <b-col xl="6">
-                      <strong>Do you want to encourage someone else ?</strong>
-                      <p>
-                        you can choose this option and set their address wallet
-                      </p>
-                    </b-col>
-                    <b-col xl="6">
-                      <strong>Do you want to punish yourself ?!</strong>
-                      <p>
-                        you can choose this option and when your course deadline
-                        is over, your course prize will be transfer to us
-                      </p>
-                      <p class="textSiteThanks">
-                        thank you in advance for your participation
-                        <i class="fa-regular fa-face-kiss-wink-heart"></i>
-                      </p>
-                    </b-col>
-                  </b-row> -->
                       <b-row>
                         <div>
                           <div class="pb-3  titleBox">
@@ -140,19 +120,6 @@
                         <div v-else>{{ defaultAddress() }}</div>
                       </b-row>
                     </div>
-                    <!-- <b-row>
-                  <b-col xl="4"></b-col>
-                  <b-col xl="4">
-                    <b-row>
-                      <b-button type="submit" variant="outline-dark"
-                        >Add &nbsp;
-
-                      </b-button>
-                    </b-row>
-                  </b-col>
-                  <b-col xl="4"></b-col>
-                </b-row> -->
-
                     <b-button
                       class="mt-3"
                       @click="$bvModal.hide('modal-scoped')"
@@ -163,18 +130,19 @@
                     >
                   </b-form>
                 </div>
-
                 <div v-else>
                   <strong style="color: #fcd200da;text-align: center;">
-                  <p>
-                    Is
-                    <a href="https://metamask.io/" target="_blank">MetaMask</a>
-                    extension installed on your browser?
-                  </p>
-                  <p>
-                    Is proper network selected in MetaMask?
-                  </p>
-                  <p>(Rinkeby Test Network or Localhost on port 8545)</p>
+                    <p>
+                      Is
+                      <a href="https://metamask.io/" target="_blank"
+                        >MetaMask</a
+                      >
+                      extension installed on your browser?
+                    </p>
+                    <p>
+                      Is proper network selected in MetaMask?
+                    </p>
+                    <p>(Rinkeby Test Network or Localhost on port 8545)</p>
                   </strong>
                 </div>
               </div>
@@ -230,8 +198,6 @@ export default {
       anotherWallet: "0x0000000000000000000000000000000000000000",
       toAnother: false,
       punishMe: false,
-      // description: "",
-      // time: "",
     };
   },
   methods: {
@@ -246,14 +212,14 @@ export default {
         t = t - j;
         let timestapm = t + this.course.deadline * 604800;
         // eslint-disable-next-line no-console
-        console.log(
-          this.course.name,
-          timestapm,
-          this.anotherWallet,
-          this.punishMe,
-          this.toAnother,
-          this.prize
-        );
+        // console.log(
+        //   this.course.name,
+        //   timestapm,
+        //   this.anotherWallet,
+        //   this.punishMe,
+        //   this.toAnother,
+        //   this.prize
+        // );
         this.drizzleInstance.contracts[args.contractName].methods[
           args.method
         ].cacheSend(
@@ -285,6 +251,7 @@ export default {
   },
 };
 </script>
+
 <style scoped>
 .iconHeightt {
   min-height: auto;
@@ -299,21 +266,3 @@ export default {
   color: #fcd200da;
 }
 </style>
-<!-- <style>
-.lesson-content {
-  max-width: 640px !important;
-}
-.lesson-content .video-wrapper {
-  position: relative;
-  max-width: 640px;
-  margin: 0 auto;
-  padding-bottom: calc(9 / 16 * 100%);
-  margin-bottom: 1em;
-}
-.lesson-content .video {
-  position: absolute;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-} -->
