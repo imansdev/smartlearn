@@ -2,7 +2,6 @@
   <div v-if="isDrizzleInitialized" class="container py-1">
     <b-row>
       <b-col xl="8">
-        <!-- <div > -->
         <b-form inline class="row" @submit.prevent="onSubmit">
           <div class="pb-3">
             <b-row>
@@ -147,7 +146,6 @@
             <b-col xl="4"></b-col>
           </b-row>
         </b-form>
-        <!-- </div> -->
       </b-col>
       <b-col xl="4">
         <div class=" bgleftbox bg-gradient text-light rounded-3 p-3">
@@ -158,15 +156,15 @@
   </div>
   <div v-else>
     <strong style="color: #fcd200da;text-align: center;">
-    <p>
-      Is
-      <a href="https://metamask.io/" target="_blank">MetaMask</a>
-      extension installed on your browser?
-    </p>
-    <p>
-      Is proper network selected in MetaMask?
-    </p>
-    <p>(Rinkeby Test Network or Localhost on port 8545)</p>
+      <p>
+        Is
+        <a href="https://metamask.io/" target="_blank">MetaMask</a>
+        extension installed on your browser?
+      </p>
+      <p>
+        Is proper network selected in MetaMask?
+      </p>
+      <p>(Rinkeby Test Network or Localhost on port 8545)</p>
     </strong>
   </div>
 </template>
