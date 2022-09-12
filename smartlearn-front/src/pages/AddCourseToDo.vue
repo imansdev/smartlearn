@@ -172,7 +172,7 @@
 <script>
 import { mapGetters } from "vuex";
 import moment from "moment";
-import TotalUserToSite from "../components/TotalUserToSite.vue";
+import TotalUserToSite from "../components/totalUserToSite.vue";
 
 const args = {
   contractName: "SmartLearn",
