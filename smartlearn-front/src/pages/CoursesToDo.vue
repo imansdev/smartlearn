@@ -81,16 +81,13 @@ export default {
       return outputTaks;
     },
   },
-  // methods: {
-  //   // total(){
-  //     f();
-  //   // }
-  // },
+
   created() {
     this.$store.dispatch("drizzle/REGISTER_CONTRACT", args);
   },
 };
 </script>
+
 <style>
 .bar {
   color: #fcd200da;

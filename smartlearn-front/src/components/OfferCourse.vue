@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- <div>{{g}}</div> -->
     <b-form inline class="row" @submit.prevent="orderCourse">
       <div class="pt-2 pb-1"><i class="fa-solid fa-link"></i></div>
       <div class="pb-3 pt-1">
@@ -36,8 +35,6 @@
         <b-button type="submit" variant="outline-dark">Offer course</b-button>
       </div>
     </b-form>
-    <!-- <div><Kokg /></div> -->
-
   </div>
 </template>
 
@@ -60,9 +57,6 @@ export default {
       method: "decreaseCount",
     };
   },
-  // components: {
-  //   Kokg,
-  // },
   props: { countOfOffer: Number },
   methods: {
     orderCourse() {

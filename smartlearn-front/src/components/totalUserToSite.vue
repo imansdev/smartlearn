@@ -11,7 +11,6 @@
       <b-col xl="1">
         {{ totalContribution }}
       </b-col>
-      <!-- <b-col  xl="1"><strong>ETH</strong></b-col> -->
     </b-row>
     <div class="b-divider"></div>
 
@@ -25,13 +24,12 @@
 
       <b-col class="pt-2" xl="1">:</b-col>
       <b-col class="timesAlign pt-2" xl="1">
-        <div >{{ countOfOffer }}</div>
+        <div>{{ countOfOffer }}</div>
       </b-col>
-      <!-- <b-col class="pt-2" xl="1"><strong>TIMES</strong></b-col> -->
     </b-row>
 
     <div v-if="countOfOffer >= 1">
-    <div class="b-divider"></div>
+      <div class="b-divider"></div>
       <OfferCourse :countOfOffer="countOfOffer" />
     </div>
   </div>
@@ -62,28 +60,19 @@ export default {
 
     totalContribution() {
       const wei = 1e18;
-      // const web3 = this.drizzleInstance.web3;
       let amount = this.getContractData({
         contract: "SmartLearn",
         method: "getTotal",
       });
-
       return amount / wei;
-      // web3.utils.fromWei(new web3.utils.BN(fh));
-
-      // return this.contractInstances[args.contractName].getCourses
     },
 
     countOfOffer() {
-      // const web3 = this.drizzleInstance.web3;
       let counter = this.getContractData({
         contract: "SmartLearn",
         method: "reachTotal",
       });
-
       return counter;
-
-      // return this.contractInstances[args.contractName].getCourses
     },
   },
   created() {
@@ -94,17 +83,15 @@ export default {
 </script>
 
 <style>
-
-.timesAlign{
+.timesAlign {
   text-align: center;
 }
 .b-divider {
-  
   width: 100%;
   height: 2px;
   background-color: black;
   border: solid black;
   border-width: 1px 0;
-  box-shadow: inset 0 .5em 1.5em black, inset 0 .125em .5em black;
+  box-shadow: inset 0 0.5em 1.5em black, inset 0 0.125em 0.5em black;
 }
 </style>

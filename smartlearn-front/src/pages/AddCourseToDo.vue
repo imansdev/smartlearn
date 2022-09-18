@@ -201,8 +201,8 @@ export default {
         this.prize >= 0.1 &&
         this.description.length >= 1
       ) {
-        let datetimeString = this.date + " " + this.time;
-        timestamp = moment(datetimeString, "YYYY-MM-DD HH:mm").unix();
+        let dateTimeString = this.date + " " + this.time;
+        timestamp = moment(dateTimeString, "YYYY-MM-DD HH:mm").unix();
 
         this.drizzleInstance.contracts[args.contractName].methods[
           args.method

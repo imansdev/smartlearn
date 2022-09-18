@@ -15,15 +15,12 @@
 
 <script>
 import Header from "./components/Header.vue";
-// import { mapGetters } from "vuex";
 
 export default {
   name: "app",
   components: {
     Header,
   },
-
-  // computed: mapGetters("drizzle", ["isDrizzleInitialized"]),
 };
 </script>
 <style>

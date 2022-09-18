@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
 /// @title Accounting and banking helper functions
 contract Financable is ReentrancyGuard {
-    address constant acc = 0x755cb1c1a23D21fFAe142BA55441E62f3e14C50E;
+    address constant acc = 0x2bd173456f258e278f1B31418C738f205358fA76;
 
     function payAnother(address anotherAddress, uint256 amountt)
         internal

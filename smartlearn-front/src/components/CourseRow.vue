@@ -26,10 +26,6 @@
           <i class="fa-regular fa-rectangle-xmark"></i> Killed
         </div>
         <div v-else-if="course.deadline * 1000 < new Date().getTime()">
-          <!-- {{ onKillSubmit() }} -->
-          <!-- v-b-popover.hover.right="
-            'When your deadline course expires your prize will be killed'
-          " -->
           <b-button size="sm" variant="warning" @click.prevent="onKillSubmit"
             >&nbsp;&nbsp;&nbsp;Kill&nbsp;&nbsp;&nbsp;</b-button
           >
@@ -71,10 +67,6 @@
             variant="outline-dark"
             ><strong class="yesStyle">Yes</strong></b-button
           >
-          <!-- <b-collapse id="collapse-1" class="mt-2">
-            <p class="card-text">To Address</p>
-            {{ course.anotherWallet }}
-          </b-collapse> -->
         </div>
 
         <div v-else>No</div>
@@ -129,7 +121,6 @@ export default {
     onKillSubmit() {
       const method = "kill";
       this.doAction(method);
-      // return "please confirmed the transaction";
     },
     onRemoveSubmit() {
       const method = "remove";
@@ -154,7 +145,6 @@ export default {
       }
       const m = moment(timestamp * 1000);
       const mAbsolute = m.format("YYYY/MM/DD HH:mm:ss");
-      // const mDiff = m.fromNow();
       return `${mAbsolute}`;
     },
     timeSpent(finish) {
